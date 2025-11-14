@@ -99,13 +99,29 @@
 //     </div>
 //   );
 // }
+"use client";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Experience from "@/pages/Experience";
+import Hero from "@/pages/Hero";
+import Projects from "@/pages/Projects";
 
 export default function Home() {
   return (
-    <main className="relative h-screen w-full overflow-hidden bg-black text-white flex items-center justify-center">
-      <h1 className="z-10 text-4xl font-bold">Welcome to My Site</h1>
-      <BackgroundBeams className="opacity-50" />
+    <main className="relative min-h-screen w-full  bg-white text-slate-600 ">
+      {/* <BackgroundBeams className="opacity-90 " /> */}
+      <Navbar />
+      <div className="z-10 space-y-10 w-full mt-[80px] ">
+        <Hero />
+        <Projects />
+        <About />
+        <Experience />
+        <Contact />
+        <Footer />
+      </div>
     </main>
   );
 }
