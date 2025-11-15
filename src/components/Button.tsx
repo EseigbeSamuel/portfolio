@@ -28,14 +28,12 @@ export default function Button({
     "flex items-center justify-center rounded-lg font-medium transition-all duration-200";
 
   const variantStyles = {
-    primary:
-      "bg-[#3558DC] text-white hover:bg-[#1c3c9c] hover:scale-110 disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed",
-    light:
-      "bg-blue-500 text-white hover:bg-blue-700 disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed",
+    primary: "bg-brand-red text-white hover:bg-brand-orange hover:scale-105",
     secondary:
-      "bg-slate-600 text-gray-200 hover:bg-slate-700 disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed",
+      "bg-brand-dark text-white border border-brand-orange hover:bg-brand-orange/20",
+    light: "bg-brand-orange text-white hover:bg-brand-red",
     outline:
-      "border border-borders text-gray-700 hover:bg-gray-100 disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed",
+      "border border-brand-red text-brand-red hover:bg-brand-red hover:text-white",
   };
 
   const sizeStyles = {

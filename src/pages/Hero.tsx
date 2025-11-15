@@ -1,5 +1,8 @@
+"use client";
 import Button from "@/components/Button";
+import TechStack from "@/components/TechStack";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { techStack } from "@/data/data";
 
 export default function Hero() {
   return (
@@ -10,13 +13,13 @@ export default function Hero() {
       <BackgroundBeams className="opacity-90 " />
 
       <section className="text-center space-y-3 p-4">
-        <h1 className="text-6xl h-[70px] font-bold bg-gradient-to-l from-[#6D4AFF] to-[#4D7CFF] bg-clip-text text-transparent">
+        <h1 className="text-6xl h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
           Samuel Eseigbe
         </h1>
-        <h1 className="text-7xl font-bold text-black">Full-Stack Developer</h1>
+        <h1 className="text-7xl font-bold text-white">Full-Stack Developer</h1>
         <h2 className="capitalize text-3xl font-semibold">
           Building{" "}
-          <span className="bg-gradient-to-l from-[#6D4AFF] to-[#4D7CFF] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
             Innovative solutions
           </span>{" "}
           across platforms
@@ -26,7 +29,13 @@ export default function Hero() {
           seamless experience from web to mobile
         </p>
       </section>
-      <section className="flex items-center "> tech stack </section>
+      <section className="flex items-center w-full ">
+        <div className="flex items-center justify-evenly w-full">
+          {techStack.map((t, i) => (
+            <TechStack key={i} {...t} />
+          ))}
+        </div>
+      </section>
       <section className="flex gap-5 ">
         <Button
           label="View My Projects"

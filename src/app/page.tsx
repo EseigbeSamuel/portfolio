@@ -111,10 +111,10 @@ import Projects from "@/pages/Projects";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full  bg-white text-slate-600 ">
+    <main className="relative min-h-screen w-full  bg-black text-white ">
       {/* <BackgroundBeams className="opacity-90 " /> */}
       <Navbar />
-      <div className="z-10 space-y-10 w-full mt-[80px] ">
+      <div className="z-10 space-y-10 w-full py-[50px]  ">
         <Hero />
         <Projects />
         <About />

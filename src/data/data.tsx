@@ -65,3 +65,19 @@ export const projectData: projectProps[] = [
   //   { image: "", title: "", desc: "", tech: [{ title: "" }, { title: "" }] },
   //   { image: "", title: "", desc: "", tech: [{ title: "" }, { title: "" }] },
 ];
+
+interface techProps {
+  image: string;
+  title: string;
+}
+
+export const techStack: techProps[] = [
+  { image: "https://skillicons.dev/icons?i=react", title: "React" },
+  { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
+  { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
+  { image: "https://skillicons.dev/icons?i=express", title: "Express" },
+  { image: "https://skillicons.dev/icons?i=nestjs", title: "Nest.js" },
+  { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
+  { image: "https://skillicons.dev/icons?i=mongodb", title: "MongoDB" },
+  { image: "https://skillicons.dev/icons?i=postgres", title: "PostgreSQL" },
+];

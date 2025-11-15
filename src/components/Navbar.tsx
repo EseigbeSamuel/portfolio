@@ -22,10 +22,10 @@ export default function Navbar() {
       {isMobile ? (
         <div>this is mobile</div>
       ) : (
-        <div className="flex fixed left-0 top-0 px-5 items-center justify-between w-full h-[70px] bg-white shadow-sm ">
+        <div className="flex fixed left-0 top-0 px-5 items-center justify-between w-full h-[70px]  shadow-sm ">
           <section className="flex items-center gap-3">
             <Image src="/vercel.svg" alt="logo" width={30} height={30} />
-            <h1 className="text-2xl font-semibold bg-gradient-to-l from-[#6D4AFF] to-[#4D7CFF] bg-clip-text text-transparent">
+            <h1 className="text-2xl font-semibold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
               Samuel Eseigbe
             </h1>
           </section>
@@ -37,8 +37,8 @@ export default function Navbar() {
                 href={n.path}
                 className={`text-lg font-semibold duration-300 ${
                   pathname === n.path
-                    ? "text-[#3558DC]"
-                    : " hover:text-[#3558DC]"
+                    ? "text-brand-red"
+                    : " hover:text-brand-red"
                 }`}
               >
                 {n.label}
