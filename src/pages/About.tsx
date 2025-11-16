@@ -15,7 +15,7 @@ export default function About() {
           centric applications that solve real world problems.
         </p>
       </div>
-      <section className="w-full flex gap-5">
+      <section className="w-full flex gap-10">
         <div className="w-full space-y-5 ">
           <section className="flex-col flex gap-5">
             <h2 className="font-semibold text-2xl">Who I Am</h2>
@@ -59,7 +59,6 @@ export default function About() {
                 icon={<Download />}
               />
             </div>
-
             <div className="grid grid-cols-2 gap-5">
               {edu.map((e, i) => (
                 <div
@@ -77,14 +76,38 @@ export default function About() {
         </div>
 
         <div className="w-full">
-          <h2 className="font-semibold text-2xl">Skills & Expertise</h2>
-          <section>
-            {Skills.map((s, i) => (
+          <h2 className="font-semibold text-2xl text-white mb-5">
+            Skills & Expertise
+          </h2>
+
+          <section className="space-y-6">
+            {Skills.map((skill, idx) => (
               <div
-                key={i}
-                className={` bg-gradient-to-r from-${s.color1} to-${s.color2} h-10 w-full`}
+                key={idx}
+                className="shadow-xl rounded-2xl bg-brand-dark space-y-5 p-5 hover:scale-105 transition-transform duration-300"
               >
-                hellow
+                <div className="flex items-center gap-4">
+                  <div
+                    className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-r ${skill.color} text-white text-2xl`}
+                  >
+                    {skill.icon}
+                  </div>
+
+                  <h3 className="text-2xl font-semibold text-white">
+                    {skill.title}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {skill.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm shadow-sm capitalize"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </section>

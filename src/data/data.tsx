@@ -92,6 +92,7 @@ export const edu: eduProps[] = [
   { number: 2, label: "years experience" },
   { number: 3, label: "platforms" },
 ];
+import { ReactNode } from "react";
 // {
 //   /* <div className="flex space-x-4">
 //               <FaLinkedin className="w-6 h-6 stroke-current" />
@@ -99,12 +100,46 @@ export const edu: eduProps[] = [
 //               <FaGithub className="w-6 h-6 stroke-current" />
 //             </div> */
 // }
+import { FaReact, FaNodeJs, FaMobileAlt } from "react-icons/fa";
 
 interface skillsProps {
-  color1: string;
-  color2: string;
+  title: string;
+  icon: ReactNode;
+  color: string;
+  tech: string[];
 }
 export const Skills: skillsProps[] = [
-  { color1: "bg-green-300", color2: "bg-blue-700" },
-  { color1: "bg-green-300", color2: "bg-blue-700" },
+  {
+    title: "Frontend Development",
+    icon: <FaReact />,
+    color: "from-blue-500 to-cyan-500",
+    tech: [
+      "React",
+      "React Native",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "Next.js",
+      "angular",
+    ],
+  },
+  {
+    title: "Backend Development",
+    icon: <FaNodeJs />,
+    color: "from-green-500 to-emerald-500",
+    tech: [
+      "Node.js",
+      "Express.js",
+      "nest.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Firebase",
+      "ORM",
+    ],
+  },
+  {
+    title: "Mobile Development",
+    icon: <FaMobileAlt />,
+    color: "from-purple-500 to-pink-500",
+    tech: ["React Native", "Mobile UI/UX", "Push Notifications"],
+  },
 ];
