@@ -3,10 +3,10 @@ import { projectData } from "@/data/data";
 
 export default function Projects() {
   return (
-    <div id="project" className=" gap-10 flex flex-col items-center ">
+    <div id="project" className=" gap-10 flex flex-col ">
       <section className="text-center flex flex-col items-center gap-3">
-        <h1 className="font-bold text-5xl text-black">Featured Projects</h1>
-        <p className="text-2xl text-center px-[400px]">
+        <h1 className="font-bold text-5xl ">Featured Projects</h1>
+        <p className="text-xl text-center px-[400px]">
           A showcase of my diverse development projects spanning web
           applications and mobile apps.
         </p>

@@ -16,7 +16,7 @@ export default function Hero() {
         <h1 className="text-6xl h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
           Samuel Eseigbe
         </h1>
-        <h1 className="text-7xl font-bold text-white">Full-Stack Developer</h1>
+        <h1 className="text-7xl font-bold ">Full-Stack Developer</h1>
         <h2 className="capitalize text-3xl font-semibold">
           Building{" "}
           <span className="bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">

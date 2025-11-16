@@ -114,7 +114,7 @@ export default function Home() {
     <main className="relative min-h-screen w-full  bg-black text-white ">
       {/* <BackgroundBeams className="opacity-90 " /> */}
       <Navbar />
-      <div className="z-10 space-y-10 w-full py-[50px]  ">
+      <div className="z-10 space-y-20 w-full py-[50px] px-[100px]  ">
         <Hero />
         <Projects />
         <About />

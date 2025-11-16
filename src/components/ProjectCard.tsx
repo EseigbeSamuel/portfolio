@@ -13,7 +13,7 @@ interface Props {
 
 export default function ProjectCard({ image, title, desc, tech }: Props) {
   return (
-    <div className=" border rounded-xl">
+    <div className=" rounded-xl shadow-lg w-[400px] bg-brand-dark">
       <div>
         <Image
           src={image}
