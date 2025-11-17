@@ -8,8 +8,8 @@ export default function Footer() {
   const pathname = usePathname();
 
   return (
-    <div className="lg:flex w-full justify-between px-[100px] py-10 bg-brand-dark">
-      <section className="space-y-5">
+    <div className="lg:flex w-full space-y-5 justify-between lg:px-[100px] px-5 py-10 bg-brand-dark ">
+      <section className="space-y-3 lg:space-y-5">
         <div className="flex gap-3 items-center">
           <Image src="/vercel.svg" alt="logo" width={30} height={30} />
           <h2 className="font-semibold text-2xl">Samuel Eseigbe</h2>
@@ -29,9 +29,9 @@ export default function Footer() {
           <FaGithub className="w-6 h-6 stroke-current" />
         </div>
       </section>
-      <section className="space-y-5">
+      <section className="space-y-3 lg:space-y-5">
         <h2 className="font-semibold text-2xl">Quick Links</h2>
-        <nav className="grid gap-4 text-center">
+        <nav className="grid gap-4 lg:text-center">
           {navitems.map((n) => (
             <Link
               key={n.path}
@@ -45,9 +45,9 @@ export default function Footer() {
           ))}
         </nav>
       </section>
-      <section className="space-y-5">
-        <h2 className="font-semibold text-2xl text-center">Services</h2>
-        <ul className="text-lg space-y-4 font-semibold text-center">
+      <section className="space-y-3 lg:space-y-5">
+        <h2 className="font-semibold text-2xl lg:text-center">Services</h2>
+        <ul className="text-lg space-y-4 font-semibold lg:text-center">
           <li>Web Development</li>
           <li>Mobile Apps</li>
         </ul>

@@ -6,17 +6,17 @@ import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
 export default function About() {
   return (
-    <div id="about" className="space-y-10">
+    <div id="about" className="space-y-10 max-w-[1440px]">
       <div className="text-center">
-        <h1 className="text-5xl font-bold"> About Me </h1>
-        <p className="text-xl text-center px-[350px]">
+        <h1 className="text-3xl lg:text-5xl font-bold"> About Me </h1>
+        <p className="lg:text-xl text-center lg:px-[350px]">
           A passionate software engineer specializing in full-stack development,
           mobile applications, and automation solutions. I build scalable, user
           centric applications that solve real world problems.
         </p>
       </div>
 
-      <section className="w-full flex gap-10">
+      <section className="w-full grid lg:flex gap-10">
         <div id="who i am" className="w-full space-y-5 ">
           <section className="flex-col flex gap-5">
             <h2 className="font-semibold text-2xl">Who I Am</h2>
@@ -121,7 +121,10 @@ export default function About() {
         </h2>
         <div className="space-y-5">
           {Exp.map((e, i) => (
-            <section className="w-full flex flex-col items-end rounded-xl bg-brand-red">
+            <section
+              key={i}
+              className="w-full flex flex-col items-end rounded-xl bg-brand-red"
+            >
               <div className="w-[99.5%]  bg-brand-dark p-5 space-y-3 rounded-xl ">
                 <section className="w-full flex items-center justify-between capitalize ">
                   <div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Button from "./Button";
 
 interface SubProps {
   title: string;
@@ -8,19 +9,19 @@ interface Props {
   image: string;
   title: string;
   desc: string;
-  tech: SubProps[];
+  tech: string[];
 }
 
 export default function ProjectCard({ image, title, desc, tech }: Props) {
   return (
-    <div className=" rounded-xl shadow-lg w-[400px] bg-brand-dark">
+    <div className=" rounded-xl shadow-lg w-full lg:w-[400px] bg-brand-dark">
       <div>
         <Image
           src={image}
           alt={title}
-          width={400}
+          width={300}
           height={200}
-          className="rounded-t-lg bg-yellow-400"
+          className="rounded-t-lg bg-brand-orange w-full h-full object-contain"
         />
       </div>
 
@@ -31,15 +32,18 @@ export default function ProjectCard({ image, title, desc, tech }: Props) {
         </div>
 
         <div className="flex gap-2 mt-3 flex-wrap">
-          {tech.map((t, i) => (
+          {tech.map((tech, i) => (
             <span
               key={i}
               className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm shadow-sm capitalize"
             >
-              {t.title}
+              {tech}
             </span>
           ))}
         </div>
+      </section>
+      <section className="p-4 ">
+        <Button label="View" fullWidth={true} />
       </section>
     </div>
   );

@@ -9,11 +9,7 @@ interface projectProps {
   image: string;
   title: string;
   desc: string;
-  tech: subprops[];
-}
-
-interface subprops {
-  title: string;
+  tech: string[];
 }
 
 export const projectData: projectProps[] = [
@@ -21,43 +17,43 @@ export const projectData: projectProps[] = [
     image: "/img1.png",
     title: "Project One",
     desc: "Description here",
-    tech: [{ title: "React" }, { title: "Next.js" }],
+    tech: ["react", "next.js"],
   },
   {
     image: "/img1.png",
     title: "Project One",
     desc: "Description here",
-    tech: [{ title: "React" }, { title: "Next.js" }],
+    tech: ["react", "next.js"],
   },
   {
     image: "/img1.png",
     title: "Project One",
     desc: "Description here",
-    tech: [{ title: "React" }, { title: "Next.js" }],
+    tech: ["react", "next.js"],
   },
   {
     image: "/img1.png",
     title: "Project One",
     desc: "Description here",
-    tech: [{ title: "React" }, { title: "Next.js" }],
+    tech: ["react", "next.js"],
   },
   {
     image: "/img1.png",
     title: "Project One",
     desc: "Description here",
-    tech: [{ title: "React" }, { title: "Next.js" }],
+    tech: ["react", "next.js"],
   },
   {
     image: "/img1.png",
     title: "Project One",
     desc: "Description here",
-    tech: [{ title: "React" }, { title: "Next.js" }],
+    tech: ["react", "next.js"],
   },
   {
     image: "/img1.png",
     title: "Project One",
     desc: "Description here",
-    tech: [{ title: "React" }, { title: "Next.js" }],
+    tech: ["react", "next.js"],
   },
 
   //   { image: "", title: "", desc: "", tech: [{ title: "" }, { title: "" }] },
@@ -126,7 +122,6 @@ export const Skills: skillsProps[] = [
       "MongoDB",
       "PostgreSQL",
       "Firebase",
-      "ORM",
     ],
   },
   {
@@ -166,7 +161,7 @@ export const Exp: expProps[] = [
     desc: "Contributed to the development of a cybersecurity compliance web application using React.",
     features: [
       "Collaborating with teammates during code reviews, debugging API response issues, and optimizing the API integration for performance.",
-      "•Developing user authentication features using React, integrating login, signup, and role-based access controls.",
+      "Developing user authentication features using React, integrating login, signup, and role-based access controls.",
       "Ensuring responsive and accessible UI designs that worked seamlessly across different devices and browsers",
       "Writing reusable and modular components in React to simplify code maintenance and scalability",
     ],
