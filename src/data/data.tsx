@@ -2,7 +2,6 @@ export const navitems = [
   { path: "#hero", label: "Home" },
   { path: "#project", label: "Projects" },
   { path: "#about", label: "About" },
-  //   { path: "#experience", label: "Experience" },
   { path: "#contact", label: "Contact" },
 ];
 
@@ -93,13 +92,7 @@ export const edu: eduProps[] = [
   { number: 3, label: "platforms" },
 ];
 import { ReactNode } from "react";
-// {
-//   /* <div className="flex space-x-4">
-//               <FaLinkedin className="w-6 h-6 stroke-current" />
-//               <FaTwitter className="w-6 h-6 stroke-current" />
-//               <FaGithub className="w-6 h-6 stroke-current" />
-//             </div> */
-// }
+
 import { FaReact, FaNodeJs, FaMobileAlt } from "react-icons/fa";
 
 interface skillsProps {
@@ -142,4 +135,41 @@ export const Skills: skillsProps[] = [
     color: "from-purple-500 to-pink-500",
     tech: ["React Native", "Mobile UI/UX", "Push Notifications"],
   },
+];
+
+interface expProps {
+  title: string;
+  place: string;
+  date: string;
+  desc: string;
+  features: string[];
+}
+
+export const Exp: expProps[] = [
+  {
+    title: "junior frontend developer",
+    place: "elsoft tech hub",
+    date: "january 2025 - present",
+    desc: "Contributed developed and delivered responsive, user-centric web and mobile applications. ",
+    features: [
+      "Developed a Student Management Application built with Next.js,",
+      "Design and implementation of dashboards and authentication systems.",
+      "Performance optimization of pages for seamless academic record management.",
+      "Created a Real Estate Application with React Native,",
+      "Ensuring responsive, mobile first experience for property listings and client interactions.",
+    ],
+  },
+  {
+    title: "frontend developer intern",
+    place: "veegel technology limited",
+    date: "june 2024 - december 2024 ",
+    desc: "Contributed to the development of a cybersecurity compliance web application using React.",
+    features: [
+      "Collaborating with teammates during code reviews, debugging API response issues, and optimizing the API integration for performance.",
+      "•Developing user authentication features using React, integrating login, signup, and role-based access controls.",
+      "Ensuring responsive and accessible UI designs that worked seamlessly across different devices and browsers",
+      "Writing reusable and modular components in React to simplify code maintenance and scalability",
+    ],
+  },
+  // { title: "", place: "", date: "", desc: "", features: [""] },
 ];

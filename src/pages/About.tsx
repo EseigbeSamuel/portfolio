@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/components/Button";
-import { edu, Skills } from "@/data/data";
+import { edu, Exp, Skills } from "@/data/data";
 import { Download } from "lucide-react";
 import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
@@ -15,8 +15,9 @@ export default function About() {
           centric applications that solve real world problems.
         </p>
       </div>
+
       <section className="w-full flex gap-10">
-        <div className="w-full space-y-5 ">
+        <div id="who i am" className="w-full space-y-5 ">
           <section className="flex-col flex gap-5">
             <h2 className="font-semibold text-2xl">Who I Am</h2>
             <p className="">
@@ -75,7 +76,7 @@ export default function About() {
           </section>
         </div>
 
-        <div className="w-full">
+        <div id="skills" className="w-full">
           <h2 className="font-semibold text-2xl text-white mb-5">
             Skills & Expertise
           </h2>
@@ -111,6 +112,36 @@ export default function About() {
               </div>
             ))}
           </section>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="font-semibold text-2xl text-white mb-5 text-center">
+          Experience
+        </h2>
+        <div className="space-y-5">
+          {Exp.map((e, i) => (
+            <section className="w-full flex flex-col items-end rounded-xl bg-brand-red">
+              <div className="w-[99.5%]  bg-brand-dark p-5 space-y-3 rounded-xl ">
+                <section className="w-full flex items-center justify-between capitalize ">
+                  <div>
+                    <h2 className="text-xl font-semibold ">{e.title} </h2>
+                    <p className="text-brand-red">{e.place} </p>
+                  </div>
+                  <p>{e.date} </p>
+                </section>
+                <p>{e.desc} </p>
+                <section>
+                  <h3 className="text-lg font-medium">Key Features</h3>
+                  <ul className="list-disc accent-brand-red px-5">
+                    {e.features.map((features, i) => (
+                      <li key={i}>{features} </li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            </section>
+          ))}
         </div>
       </section>
     </div>

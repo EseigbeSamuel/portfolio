@@ -34,7 +34,7 @@ export default function ProjectCard({ image, title, desc, tech }: Props) {
           {tech.map((t, i) => (
             <span
               key={i}
-              className="px-3 py-1 text-sm rounded-md bg-gray-200 dark:bg-gray-700"
+              className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm shadow-sm capitalize"
             >
               {t.title}
             </span>

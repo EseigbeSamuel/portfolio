@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -22,7 +23,7 @@ export default function Navbar() {
       {isMobile ? (
         <div>this is mobile</div>
       ) : (
-        <div className="flex fixed left-0 top-0 px-5 items-center justify-between w-full h-[70px]  shadow-sm backdrop-blur ">
+        <div className="flex fixed left-0 top-0 px-[100px] items-center justify-between w-full h-[70px]  shadow-sm backdrop-blur ">
           <section className="flex items-center gap-3">
             <Image src="/vercel.svg" alt="logo" width={30} height={30} />
             <h1 className="text-2xl font-semibold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
@@ -45,7 +46,13 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
-          <section> icons icons icons </section>
+          <section>
+            <div className="flex space-x-4">
+              <FaLinkedin className="w-6 h-6 stroke-current" />
+              <FaTwitter className="w-6 h-6 stroke-current" />
+              <FaGithub className="w-6 h-6 stroke-current" />
+            </div>
+          </section>
         </div>
       )}
     </div>
