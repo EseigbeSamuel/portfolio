@@ -3,14 +3,23 @@ import Button from "@/components/Button";
 import TechStack from "@/components/TechStack";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { techStack } from "@/data/data";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const screensize = () => setIsMobile(window.innerWidth < 765);
+    screensize();
+    window.addEventListener("resize", screensize);
+    return () => window.removeEventListener("resize", screensize);
+  }, []);
   return (
     <div
       id="hero"
       className=" min-h-[calc(100dvh-100px)] w-full max-w-[1440px] flex flex-col items-center justify-center gap-10"
     >
-      <BackgroundBeams className="opacity-90 " />
+      {isMobile ? "" : <BackgroundBeams className="opacity-90 " />}
 
       <section className="text-center space-y-3 p-4">
         <h1 className="text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
