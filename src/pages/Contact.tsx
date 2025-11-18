@@ -1,4 +1,5 @@
 import { Locate, Mail } from "lucide-react";
+import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Contact() {
@@ -45,9 +46,29 @@ export default function Contact() {
           <div>
             <h2 className="font-bold text-2xl mb-3">Follow Me</h2>
             <div className="flex space-x-4">
-              <FaLinkedin className="w-6 h-6 stroke-current" />
-              <FaTwitter className="w-6 h-6 stroke-current" />
-              <FaGithub className="w-6 h-6 stroke-current" />
+              <Link
+                href="https://www.linkedin.com/in/eseigbe-samuel-ba6891333/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin className="w-6 h-6 stroke-current" />
+              </Link>
+
+              <Link
+                href="https://x.com/muel_se"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter className="w-6 h-6 stroke-current" />
+              </Link>
+
+              <Link
+                href="https://github.com/EseigbeSamuel"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub className="w-6 h-6 stroke-current" />
+              </Link>
             </div>
           </div>
         </section>

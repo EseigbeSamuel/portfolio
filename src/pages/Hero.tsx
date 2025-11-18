@@ -23,7 +23,7 @@ export default function Hero() {
 
       <section className="text-center space-y-3 p-4">
         <h1 className="text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
-          Samuel Eseigbe
+          Eseigbe Samuel
         </h1>
         <h1 className=" text-4xl lg:text-7xl font-bold ">
           Full-Stack Developer

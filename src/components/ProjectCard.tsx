@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Button from "./Button";
 
 interface SubProps {
@@ -6,7 +6,7 @@ interface SubProps {
 }
 
 interface Props {
-  image: string;
+  image: StaticImageData;
   title: string;
   desc: string;
   tech: string[];
@@ -21,7 +21,7 @@ export default function ProjectCard({ image, title, desc, tech }: Props) {
           alt={title}
           width={300}
           height={200}
-          className="rounded-t-lg bg-brand-orange w-full h-full object-contain"
+          className="rounded-t-lg bg-brand-orange w-full object-contain"
         />
       </div>
 
@@ -31,16 +31,18 @@ export default function ProjectCard({ image, title, desc, tech }: Props) {
           <p className="text-gray-500">{desc}</p>
         </div>
 
-        <div className="flex gap-2 mt-3 flex-wrap">
-          {tech.map((tech, i) => (
-            <span
-              key={i}
-              className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm shadow-sm capitalize"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        <section>
+          <div className="flex gap-2 mt-3 flex-wrap">
+            {tech.map((tech, i) => (
+              <span
+                key={i}
+                className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm shadow-sm capitalize"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </section>
       </section>
       <section className="p-4 ">
         <Button label="View" fullWidth={true} />

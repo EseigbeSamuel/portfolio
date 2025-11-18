@@ -1,3 +1,11 @@
+import { ReactNode } from "react";
+import { FaReact, FaNodeJs, FaMobileAlt, FaCloud } from "react-icons/fa";
+import { StaticImageData } from "next/image";
+import portfolio from "@/assest/images/3.png";
+import flexyermy from "@/assest/images/flexydermy.png";
+import xp from "@/assest/images/xp.png";
+import esma from "@/assest/images/esma.png";
+
 export const navitems = [
   { path: "#hero", label: "Home" },
   { path: "#project", label: "Projects" },
@@ -6,7 +14,7 @@ export const navitems = [
 ];
 
 interface projectProps {
-  image: string;
+  image: StaticImageData;
   title: string;
   desc: string;
   tech: string[];
@@ -14,51 +22,47 @@ interface projectProps {
 
 export const projectData: projectProps[] = [
   {
-    image: "/img1.png",
+    image: portfolio,
     title: "Project One",
     desc: "Description here",
-    tech: ["react", "next.js"],
+    tech: ["next.js", "Tailwind CSS", "framer motion"],
   },
   {
-    image: "/img1.png",
+    image: flexyermy,
     title: "Project One",
     desc: "Description here",
-    tech: ["react", "next.js"],
+    tech: ["angular", "tailwind CSS"],
   },
   {
-    image: "/img1.png",
+    image: esma,
     title: "Project One",
     desc: "Description here",
-    tech: ["react", "next.js"],
+    tech: ["next.js", "tailwind CSS"],
   },
   {
-    image: "/img1.png",
+    image: xp,
     title: "Project One",
     desc: "Description here",
-    tech: ["react", "next.js"],
+    tech: ["react", "framer motion", "tailwind CSS"],
   },
-  {
-    image: "/img1.png",
-    title: "Project One",
-    desc: "Description here",
-    tech: ["react", "next.js"],
-  },
-  {
-    image: "/img1.png",
-    title: "Project One",
-    desc: "Description here",
-    tech: ["react", "next.js"],
-  },
-  {
-    image: "/img1.png",
-    title: "Project One",
-    desc: "Description here",
-    tech: ["react", "next.js"],
-  },
-
-  //   { image: "", title: "", desc: "", tech: [{ title: "" }, { title: "" }] },
-  //   { image: "", title: "", desc: "", tech: [{ title: "" }, { title: "" }] },
-  //   { image: "", title: "", desc: "", tech: [{ title: "" }, { title: "" }] },
+  // {
+  //   image: "/img1.png",
+  //   title: "Project One",
+  //   desc: "Description here",
+  //   tech: ["react", "next.js"],
+  // },
+  // {
+  //   image: "/img1.png",
+  //   title: "Project One",
+  //   desc: "Description here",
+  //   tech: ["react", "next.js"],
+  // },
+  // {
+  //   image: "/img1.png",
+  //   title: "Project One",
+  //   desc: "Description here",
+  //   tech: ["react", "next.js"],
+  // },
 ];
 
 interface techProps {
@@ -87,9 +91,6 @@ export const edu: eduProps[] = [
   { number: 2, label: "years experience" },
   { number: 3, label: "platforms" },
 ];
-import { ReactNode } from "react";
-
-import { FaReact, FaNodeJs, FaMobileAlt } from "react-icons/fa";
 
 interface skillsProps {
   title: string;
@@ -130,6 +131,21 @@ export const Skills: skillsProps[] = [
     color: "from-purple-500 to-pink-500",
     tech: ["React Native", "Mobile UI/UX", "Push Notifications"],
   },
+  {
+    title: "DevOps & Tools",
+    icon: <FaCloud />, // or whichever cloud icon you prefer
+    color: "from-indigo-500 to-purple-500",
+    tech: [
+      "Docker",
+      "Git",
+      "CI/CD",
+      "AWS",
+      "Vercel",
+      "Cloudflare Workers",
+      "Linux",
+      "Shell Scripting",
+    ],
+  },
 ];
 
 interface expProps {
@@ -168,3 +184,7 @@ export const Exp: expProps[] = [
   },
   // { title: "", place: "", date: "", desc: "", features: [""] },
 ];
+
+// https://github.com/EseigbeSamuel
+// https://www.linkedin.com/in/eseigbe-samuel-ba6891333/
+// https://x.com/muel_se

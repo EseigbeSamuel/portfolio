@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FloatingNav } from "./ui/floating-navbar";
 
 export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -21,18 +22,46 @@ export default function Navbar() {
   return (
     <div className="w-full ">
       {isMobile ? (
-        <section className="p-5 flex items-center justify-center w-full">
-          <div className="flex fixed p-5 top-2  items-center justify-between w-full h-[70px] border-brand-orange border rounded-xl shadow-sm backdrop-blur ">
-            <nav className="flex w-full justify-between">
+        // <section className="p-5 flex items-center justify-center w-full">
+        //   <div className="flex fixed p-5 top-2  items-center justify-between w-full h-[70px] border-brand-orange border rounded-xl shadow-sm backdrop-blur ">
+        //     <nav className="flex w-full justify-between">
+        //       {navitems.map((n) => (
+        //         <Link
+        //           key={n.path}
+        //           href={n.path}
+        //           className={`text-lg font-semibold duration-300 ${
+        //             pathname === n.path
+        //               ? "text-brand-red"
+        //               : " hover:text-brand-red"
+        //           }`}
+        //         >
+        //           {n.label}
+        //         </Link>
+        //       ))}
+        //     </nav>
+        //   </div>
+        // </section>
+        <section className="w-full flex justify-center px-5 py-3">
+          <div
+            className="
+      fixed top-4 w-[90%] max-w-4xl
+      flex items-center justify-between
+      px-6 py-3
+      border border-brand-orange
+      rounded-2xl shadow-lg
+      backdrop-blur-md bg-black/40
+      z-50
+    "
+          >
+            <nav className="flex gap-8">
               {navitems.map((n) => (
                 <Link
                   key={n.path}
                   href={n.path}
-                  className={`text-lg font-semibold duration-300 ${
-                    pathname === n.path
-                      ? "text-brand-red"
-                      : " hover:text-brand-red"
-                  }`}
+                  className={`
+            text-lg font-semibold transition-colors
+            ${pathname === n.path ? "text-brand-red" : " hover:text-brand-red"}
+          `}
                 >
                   {n.label}
                 </Link>
@@ -66,9 +95,29 @@ export default function Navbar() {
           </nav>
           <section>
             <div className="flex space-x-4">
-              <FaLinkedin className="w-6 h-6 stroke-current" />
-              <FaTwitter className="w-6 h-6 stroke-current" />
-              <FaGithub className="w-6 h-6 stroke-current" />
+              <Link
+                href="https://www.linkedin.com/in/eseigbe-samuel-ba6891333/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin className="w-6 h-6 stroke-current" />
+              </Link>
+
+              <Link
+                href="https://x.com/muel_se"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter className="w-6 h-6 stroke-current" />
+              </Link>
+
+              <Link
+                href="https://github.com/EseigbeSamuel"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub className="w-6 h-6 stroke-current" />
+              </Link>
             </div>
           </section>
         </div>

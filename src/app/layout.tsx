@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Samuel Eseigbe",
+  title: "Eseigbe Samuel",
   description: "Software Developer Portfolio",
+  keywords: ["eseigbe", "samuel"],
 };
 
 export default function RootLayout({

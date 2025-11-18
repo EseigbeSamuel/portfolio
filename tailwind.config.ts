@@ -14,6 +14,8 @@ export default {
     "to-emerald-500",
     "from-purple-500",
     "to-pink-500",
+    "from-indigo-500",
+    "to-purple-500",
   ],
   theme: {
     extend: {
