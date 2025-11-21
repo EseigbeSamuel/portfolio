@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eseigbe Samuel",
+  title: "Samuel Eseigbe",
   description: "Software Developer Portfolio",
   keywords: ["eseigbe", "samuel"],
 };

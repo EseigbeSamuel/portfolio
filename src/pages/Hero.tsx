@@ -130,7 +130,7 @@ export default function Hero() {
           className="text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent"
           variants={itemVariants}
         >
-          Eseigbe Samuel
+          Samuel Eseigbe{" "}
         </motion.h1>
         <motion.h1
           className=" text-4xl lg:text-7xl font-bold "
