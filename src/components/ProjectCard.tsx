@@ -14,7 +14,7 @@ interface Props {
 
 export default function ProjectCard({ image, title, desc, tech }: Props) {
   return (
-    <div className=" rounded-xl shadow-lg w-full lg:w-[400px] bg-brand-dark">
+    <div className=" rounded-xl shadow-lg w-full 2xl:w-[400px] bg-brand-dark">
       <div>
         <Image
           src={image}

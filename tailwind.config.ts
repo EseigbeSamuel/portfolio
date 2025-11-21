@@ -19,6 +19,14 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: "360px",
+        md: "721px",
+        lg: "1023px",
+        xl: "1280px",
+        "2xl": "1536px",
+        "3xl": "1800px",
+      },
       colors: {
         brand: {
           dark: "#121b1d",

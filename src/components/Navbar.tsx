@@ -70,7 +70,7 @@ export default function Navbar() {
           </div>
         </section>
       ) : (
-        <div className="flex fixed left-0 top-0 px-[50px] lg:px-[100px] items-center justify-between w-full h-[70px]  shadow-sm backdrop-blur ">
+        <div className="flex fixed left-0 top-0 px-[50px] 2xl:px-[100px] items-center justify-between w-full h-[70px]  shadow-sm backdrop-blur ">
           <section className="flex items-center gap-3">
             <Image src="/vercel.svg" alt="logo" width={30} height={30} />
             <h1 className="text-2xl font-semibold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">

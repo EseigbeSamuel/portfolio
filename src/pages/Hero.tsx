@@ -1,9 +1,106 @@
+// "use client";
+// import Button from "@/components/Button";
+// import TechStack from "@/components/TechStack";
+// import { BackgroundBeams } from "@/components/ui/background-beams";
+// import { techStack } from "@/data/data";
+// import { useEffect, useState } from "react";
+
+// export default function Hero() {
+//   const [isMobile, setIsMobile] = useState(false);
+
+//   useEffect(() => {
+//     const screensize = () => setIsMobile(window.innerWidth < 765);
+//     screensize();
+//     window.addEventListener("resize", screensize);
+//     return () => window.removeEventListener("resize", screensize);
+//   }, []);
+//   return (
+//     <div
+//       id="hero"
+//       className=" min-h-[calc(100dvh-100px)] w-full max-w-[1440px] flex flex-col items-center justify-center gap-10"
+//     >
+//       {isMobile ? "" : <BackgroundBeams className="opacity-90 " />}
+
+//       <section className="text-center space-y-3 p-4">
+//         <h1 className="text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
+//           Eseigbe Samuel
+//         </h1>
+//         <h1 className=" text-4xl lg:text-7xl font-bold ">
+//           Full-Stack Developer
+//         </h1>
+//         <h2 className="capitalize text-xl lg:text-3xl font-semibold">
+//           Building{" "}
+//           <span className="bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
+//             Innovative solutions
+//           </span>{" "}
+//           across platforms
+//         </h2>
+//         <p className=" lg:text-xl">
+//           Specializing in React, React native, Node.js and Angular. Creating
+//           seamless experience from web to mobile
+//         </p>
+//       </section>
+//       <section className="w-full">
+//         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+//           {techStack.map((t, i) => (
+//             <TechStack key={i} {...t} />
+//           ))}
+//         </div>
+//       </section>
+//       <section className="grid md:flex gap-5 ">
+//         <Button
+//           label="View My Projects"
+//           size="large"
+//           //   iconPosition="left"
+//           //   icon={<User />}
+//           //   onClick={() => {
+//           //     route("/auth");
+//           //   }}
+//         />
+//         <Button
+//           label="Download Resume"
+//           size="large"
+//           variant="secondary"
+//           //   iconPosition="left"
+//           //   icon={<User />}
+//           //   onClick={() => {
+//           //     route("/auth");
+//           //   }}
+//         />
+//       </section>
+//     </div>
+//   );
+// }
 "use client";
 import Button from "@/components/Button";
 import TechStack from "@/components/TechStack";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { techStack } from "@/data/data";
 import { useEffect, useState } from "react";
+// 1. Import motion
+import { motion } from "framer-motion";
+
+// Define the animation variants for reuse
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, // Delay between each child item
+      delayChildren: 0.3, // Initial delay before children start animating
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+};
+
+const techStackVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: { scale: 1, opacity: 1 },
+};
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
@@ -14,6 +111,7 @@ export default function Hero() {
     window.addEventListener("resize", screensize);
     return () => window.removeEventListener("resize", screensize);
   }, []);
+
   return (
     <div
       id="hero"
@@ -21,53 +119,84 @@ export default function Hero() {
     >
       {isMobile ? "" : <BackgroundBeams className="opacity-90 " />}
 
-      <section className="text-center space-y-3 p-4">
-        <h1 className="text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
+      {/* 2. Wrap the text section with motion.section and apply animation */}
+      <motion.section
+        className="text-center space-y-3 p-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h1
+          className="text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent"
+          variants={itemVariants}
+        >
           Eseigbe Samuel
-        </h1>
-        <h1 className=" text-4xl lg:text-7xl font-bold ">
+        </motion.h1>
+        <motion.h1
+          className=" text-4xl lg:text-7xl font-bold "
+          variants={itemVariants}
+        >
           Full-Stack Developer
-        </h1>
-        <h2 className="capitalize text-xl lg:text-3xl font-semibold">
+        </motion.h1>
+        <motion.h2
+          className="capitalize text-xl lg:text-3xl font-semibold"
+          variants={itemVariants}
+        >
           Building{" "}
           <span className="bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
             Innovative solutions
           </span>{" "}
           across platforms
-        </h2>
-        <p className=" lg:text-xl">
+        </motion.h2>
+        <motion.p className=" lg:text-xl" variants={itemVariants}>
           Specializing in React, React native, Node.js and Angular. Creating
           seamless experience from web to mobile
-        </p>
-      </section>
-      <section className="w-full">
+        </motion.p>
+      </motion.section>
+
+      {/* 3. Wrap the tech stack section and apply staggered animation to children */}
+      <motion.section
+        className="w-full"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
           {techStack.map((t, i) => (
-            <TechStack key={i} {...t} />
+            <motion.div
+              key={i}
+              variants={techStackVariants} // Use the specialized variant
+              transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+            >
+              <TechStack {...t} />
+            </motion.div>
           ))}
         </div>
-      </section>
-      <section className="grid md:flex gap-5 ">
-        <Button
-          label="View My Projects"
-          size="large"
-          //   iconPosition="left"
-          //   icon={<User />}
-          //   onClick={() => {
-          //     route("/auth");
-          //   }}
-        />
-        <Button
-          label="Download Resume"
-          size="large"
-          variant="secondary"
-          //   iconPosition="left"
-          //   icon={<User />}
-          //   onClick={() => {
-          //     route("/auth");
-          //   }}
-        />
-      </section>
+      </motion.section>
+
+      {/* 4. Wrap the button section and apply entrance animation */}
+      <motion.section
+        className="grid md:flex gap-5 "
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={itemVariants}>
+          <Button
+            label="View My Projects"
+            size="large"
+            // ... other props
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <Button
+            label="Download Resume"
+            size="large"
+            variant="secondary"
+            // ... other props
+          />
+        </motion.div>
+      </motion.section>
     </div>
   );
 }
