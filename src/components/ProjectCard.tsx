@@ -10,11 +10,23 @@ interface Props {
   title: string;
   desc: string;
   tech: string[];
+  link?: string;
+  onClick: () => void;
 }
 
-export default function ProjectCard({ image, title, desc, tech }: Props) {
+export default function ProjectCard({
+  image,
+  title,
+  desc,
+  tech,
+  link,
+  onClick,
+}: Props) {
   return (
-    <div className=" rounded-xl shadow-lg w-full 2xl:w-[400px] bg-brand-dark">
+    <div
+      className=" rounded-xl shadow-lg w-full 2xl:w-[400px] bg-brand-dark"
+      onClick={onClick}
+    >
       <div>
         <Image
           src={image}
@@ -28,7 +40,7 @@ export default function ProjectCard({ image, title, desc, tech }: Props) {
       <section className="p-4">
         <div className="mt-4">
           <h1 className="text-xl font-bold">{title}</h1>
-          <p className="text-gray-500">{desc}</p>
+          <p className="text-gray-500 line-clamp-3">{desc}</p>
         </div>
 
         <section>
@@ -44,8 +56,16 @@ export default function ProjectCard({ image, title, desc, tech }: Props) {
           </div>
         </section>
       </section>
-      <section className="p-4 ">
-        <Button label="View" fullWidth={true} />
+      <section className="p-4">
+        {link ? (
+          <Button
+            label="View"
+            fullWidth={true}
+            onClick={() => window.open(link, "_blank")}
+          />
+        ) : onClick ? (
+          <Button label="View" fullWidth={true} onClick={onClick} />
+        ) : null}
       </section>
     </div>
   );

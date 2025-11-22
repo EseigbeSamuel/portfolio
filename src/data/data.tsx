@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { FaReact, FaNodeJs, FaMobileAlt, FaCloud } from "react-icons/fa";
 import { StaticImageData } from "next/image";
-import portfolio from "@/assest/images/3.png";
+// import portfolio from "@/assest/images/3.png";
 import flexyermy from "@/assest/images/flexydermy.png";
 import xp from "@/assest/images/xp.png";
 import esma from "@/assest/images/esma.png";
@@ -18,51 +18,35 @@ interface projectProps {
   title: string;
   desc: string;
   tech: string[];
+  link?: string;
 }
 
 export const projectData: projectProps[] = [
-  {
-    image: portfolio,
-    title: "Project One",
-    desc: "Description here",
-    tech: ["next.js", "Tailwind CSS", "framer motion"],
-  },
+  // {
+  //   image: portfolio,
+  //   title: "Portfolio",
+  //   desc: "Description here",
+  //   tech: ["next.js", "Tailwind CSS", "framer motion"],
+  // },
   {
     image: flexyermy,
-    title: "Project One",
-    desc: "Description here",
+    title: "flexydemy",
+    desc: "Flexydermy is an educational platform that seamlessly connects tutors and students for online learning. The platform features integrated video calling for live lectures, secure payment processing, and robust file management allowing users to upload and download course materials and documents. Flexydermy provides a complete virtual classroom experience, enabling efficient knowledge transfer between educators and learners in a unified environment.",
     tech: ["angular", "tailwind CSS"],
   },
   {
     image: esma,
-    title: "Project One",
-    desc: "Description here",
+    title: "ESMA",
+    desc: "ESMA (Elsoft School Management Application) is a comprehensive web-based solution designed to streamline school administration. The platform centralizes all academic operations, enabling schools to efficiently manage student records, attendance, grades, schedules, and faculty information. ESMA simplifies administrative workflows and provides a unified system for handling the complete spectrum of academic affairs",
     tech: ["next.js", "tailwind CSS"],
+    link: "https://github.com/EseigbeSamuel",
   },
   {
     image: xp,
-    title: "Project One",
-    desc: "Description here",
+    title: "XP Requiter",
+    desc: "XP Requiter is a comprehensive healthcare ecosystem platform that connects patients, doctors, hospitals, and investors in a unified network. The platform facilitates telemedicine consultations, secure payment processing, medical document management, and healthcare investment opportunities. XP Requiter creates a complete digital health infrastructure that streamlines patient care delivery while enabling strategic financial partnerships in the medical sector.",
     tech: ["react", "framer motion", "tailwind CSS"],
   },
-  // {
-  //   image: "/img1.png",
-  //   title: "Project One",
-  //   desc: "Description here",
-  //   tech: ["react", "next.js"],
-  // },
-  // {
-  //   image: "/img1.png",
-  //   title: "Project One",
-  //   desc: "Description here",
-  //   tech: ["react", "next.js"],
-  // },
-  // {
-  //   image: "/img1.png",
-  //   title: "Project One",
-  //   desc: "Description here",
-  //   tech: ["react", "next.js"],
-  // },
 ];
 
 interface techProps {
