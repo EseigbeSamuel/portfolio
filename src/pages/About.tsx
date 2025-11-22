@@ -330,7 +330,7 @@ export default function About() {
   return (
     <motion.div
       id="about"
-      className="space-y-10 max-w-[1440px] py-[50px] px-4 md:px-6 lg:px-8 mx-auto"
+      className="space-y-10 max-w-[1440px] px-4 md:px-6 lg:px-8 mx-auto"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
