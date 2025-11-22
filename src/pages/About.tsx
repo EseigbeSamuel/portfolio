@@ -9,8 +9,8 @@ export default function About() {
   return (
     <motion.div
       id="about"
-      className="space-y-10 max-w-[1440px] py-[60px] "
-      initial="hidden"
+      className="space-y-10 max-w-[1440px] py-[50px] "
+      initial="visible"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={{
@@ -42,9 +42,7 @@ export default function About() {
         </p>
       </motion.div>
 
-      {/* MAIN GRID */}
-      <section className="w-full grid grid-cols-1 lg:flex gap-10">
-        {/* LEFT SIDE */}
+      <section className="w-full block lg:flex gap-10">
         <motion.div
           id="who i am"
           className="w-full space-y-5"
@@ -57,7 +55,6 @@ export default function About() {
             },
           }}
         >
-          {/* Who I Am */}
           <section className="flex-col flex gap-5">
             <h2 className="font-semibold text-2xl">Who I Am</h2>
             <p className="">
