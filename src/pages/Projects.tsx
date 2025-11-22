@@ -79,7 +79,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { useModal } from "@/contexts/ModalContext"; // Ensure this path matches your setup
 import { projectData } from "@/data/data";
 import { motion } from "framer-motion";
-import ProjectDescription from "./ProjectDescription";
+import ProjectDescription from "../components/ProjectDescription";
 // Import the type if it's exported from data, or redefine it here if needed
 import { StaticImageData } from "next/image";
 
