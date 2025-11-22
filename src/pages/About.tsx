@@ -3,7 +3,6 @@
 import Button from "@/components/Button";
 import { edu, Exp, Skills } from "@/data/data";
 import { Download } from "lucide-react";
-import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -44,7 +43,7 @@ export default function About() {
       </motion.div>
 
       {/* MAIN GRID */}
-      <section className="w-full grid lg:flex gap-10">
+      <section className="w-full grid grid-cols-1 lg:flex gap-10">
         {/* LEFT SIDE */}
         <motion.div
           id="who i am"
