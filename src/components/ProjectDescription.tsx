@@ -19,7 +19,7 @@ export default function ProjectDescription({
         <Image src={image} alt={title} fill className="object-cover" />
       </div>
 
-      <section className="p-5 space-y-6 overflow-y-auto">
+      <section className="p-5 space-y-6 overflow-y-auto h-[250px] md:h-[400px] ">
         <h1 className="text-2xl font-bold">{title}</h1>
         <p className="">{desc}</p>
         <div className="space-y-3">

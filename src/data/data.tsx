@@ -33,6 +33,7 @@ export const projectData: projectProps[] = [
     title: "flexydemy",
     desc: "Flexydermy is an educational platform that seamlessly connects tutors and students for online learning. The platform features integrated video calling for live lectures, secure payment processing, and robust file management allowing users to upload and download course materials and documents. Flexydermy provides a complete virtual classroom experience, enabling efficient knowledge transfer between educators and learners in a unified environment.",
     tech: ["angular", "tailwind CSS"],
+    link: "http://dev.flexydemy.com/",
   },
   {
     image: esma,
