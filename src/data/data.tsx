@@ -5,9 +5,10 @@ import { StaticImageData } from "next/image";
 import flexyermy from "@/assest/images/flexydermy.png";
 import xp from "@/assest/images/xp.png";
 import esma from "@/assest/images/esma.png";
+import vegeel from "@/assest/images/vegeel.png";
 
 export const navitems = [
-  { path: "#hero", label: "Home" },
+  { path: "#home", label: "Home" },
   { path: "#project", label: "Projects" },
   { path: "#about", label: "About" },
   { path: "#contact", label: "Contact" },
@@ -32,21 +33,27 @@ export const projectData: projectProps[] = [
     image: flexyermy,
     title: "flexydemy",
     desc: "Flexydermy is an educational platform that seamlessly connects tutors and students for online learning. The platform features integrated video calling for live lectures, secure payment processing, and robust file management allowing users to upload and download course materials and documents. Flexydermy provides a complete virtual classroom experience, enabling efficient knowledge transfer between educators and learners in a unified environment.",
-    tech: ["angular", "tailwind CSS"],
+    tech: ["angular", "tailwind CSS", "rxjs"],
     link: "http://dev.flexydemy.com/",
   },
   {
     image: esma,
     title: "ESMA",
     desc: "ESMA (Elsoft School Management Application) is a comprehensive web-based solution designed to streamline school administration. The platform centralizes all academic operations, enabling schools to efficiently manage student records, attendance, grades, schedules, and faculty information. ESMA simplifies administrative workflows and provides a unified system for handling the complete spectrum of academic affairs",
-    tech: ["next.js", "tailwind CSS"],
-    link: "https://github.com/EseigbeSamuel",
+    tech: ["next.js", "tailwind CSS", "shadcn", "redux", "axois"],
   },
   {
     image: xp,
     title: "XP Requiter",
     desc: "XP Requiter is a comprehensive healthcare ecosystem platform that connects patients, doctors, hospitals, and investors in a unified network. The platform facilitates telemedicine consultations, secure payment processing, medical document management, and healthcare investment opportunities. XP Requiter creates a complete digital health infrastructure that streamlines patient care delivery while enabling strategic financial partnerships in the medical sector.",
-    tech: ["react", "framer motion", "tailwind CSS"],
+    tech: ["react", "framer motion", "tailwind CSS", "axois", "redux"],
+  },
+  {
+    image: vegeel,
+    title: "Vegeel",
+    desc: "Vegeel is a comprehensive cybersecurity compliance platform that helps organizations manage and monitor their security posture. The application streamlines compliance workflows, automates security assessments, and provides real-time insights into regulatory requirements. Vegeel enables businesses to maintain adherence to industry standards while reducing compliance overhead through intelligent automation and centralized security management.",
+    tech: ["react", "tailwind CSS", "axois", "redux"],
+    link: "https://www.vegeel.com/",
   },
 ];
 

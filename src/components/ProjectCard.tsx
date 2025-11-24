@@ -59,12 +59,12 @@ export default function ProjectCard({
       <section className="p-4">
         {link ? (
           <Button
-            label="View"
+            label="Live Website"
             fullWidth={true}
             onClick={() => window.open(link, "_blank")}
           />
         ) : onClick ? (
-          <Button label="View" fullWidth={true} onClick={onClick} />
+          <Button label="View Details" fullWidth={true} onClick={onClick} />
         ) : null}
       </section>
     </div>

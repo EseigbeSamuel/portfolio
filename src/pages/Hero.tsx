@@ -39,9 +39,27 @@ export default function Hero() {
     return () => window.removeEventListener("resize", screensize);
   }, []);
 
+  // Download handler function
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = "/Eseigbe-Samuel-Osezele-Resume-2.pdf"; // Path to your PDF in the public folder
+    link.download = "Samuel_Eseigbe_Resume.pdf"; // Name for the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Scroll to projects section
+  const handleViewProjects = () => {
+    const projectSection = document.getElementById("project");
+    if (projectSection) {
+      projectSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
-      id="hero"
+      id="home"
       className=" min-h-[calc(100dvh-100px)] w-full max-w-[1440px] flex flex-col items-center justify-center gap-10"
     >
       {isMobile ? "" : <BackgroundBeams className="opacity-90 " />}
@@ -112,7 +130,7 @@ export default function Hero() {
           <Button
             label="View My Projects"
             size="large"
-            // ... other props
+            onClick={handleViewProjects}
           />
         </motion.div>
         <motion.div variants={itemVariants}>
@@ -120,7 +138,7 @@ export default function Hero() {
             label="Download Resume"
             size="large"
             variant="secondary"
-            // ... other props
+            onClick={handleDownloadResume}
           />
         </motion.div>
       </motion.section>
