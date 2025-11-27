@@ -1,14 +1,12 @@
 "use client";
 
 import ProjectCard from "@/components/ProjectCard";
-import { useModal } from "@/contexts/ModalContext"; // Ensure this path matches your setup
+import { useModal } from "@/contexts/ModalContext";
 import { projectData } from "@/data/data";
 import { motion } from "framer-motion";
 import ProjectDescription from "../components/ProjectDescription";
-// Import the type if it's exported from data, or redefine it here if needed
 import { StaticImageData } from "next/image";
 
-// Assuming this interface matches your data structure
 interface ProjectProps {
   image: StaticImageData;
   title: string;

@@ -1,185 +1,3 @@
-// "use client";
-
-// import Button from "@/components/Button";
-// import { edu, Exp, Skills } from "@/data/data";
-// import { Download } from "lucide-react";
-// import { motion, Variants } from "framer-motion";
-
-// // Safari-Safe Parent Animation Controller
-// const CONTAINER: Variants = {
-//   hidden: {},
-//   visible: {
-//     transition: { staggerChildren: 0.15 },
-//   },
-// };
-
-// // Child Fade Up Animation (Safari Safe)
-// const FADE_UP: Variants = {
-//   hidden: { opacity: 0, y: 35 },
-//   visible: {
-//     opacity: 1,
-//     y: 0,
-//     transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] },
-//   },
-// };
-
-// export default function About() {
-//   return (
-//     <motion.div
-//       id="about"
-//       className="space-y-12 max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-[50px]"
-//       initial="hidden"
-//       whileInView="visible"
-//       viewport={{ once: true, margin: "-10%" }} // SAFARI FIX
-//       variants={CONTAINER}
-//     >
-//       {/* HEADER */}
-//       <motion.div className="text-center space-y-4" variants={FADE_UP}>
-//         <h1 className="text-3xl lg:text-5xl font-bold">About Me</h1>
-//         <p className="lg:text-xl text-gray-300 xl:px-[300px]">
-//           A passionate software engineer specializing in full-stack development,
-//           mobile applications, and automation solutions.
-//         </p>
-//       </motion.div>
-
-//       {/* GRID WRAPPER */}
-//       <div className="grid lg:grid-cols-2 gap-10">
-//         {/* LEFT COLUMN */}
-//         <div className="space-y-10">
-//           {/* WHO I AM */}
-//           <motion.div className="space-y-5" variants={FADE_UP}>
-//             <h2 className="font-semibold text-2xl">Who I Am</h2>
-//             <p className="text-gray-300 leading-relaxed">
-//               I'm a software engineer who prioritizes maintainable, scalable
-//               systems and clean code principles. I focus on building
-//               user-centered applications that solve real-world problems while
-//               ensuring long-term code stability.
-//             </p>
-
-//             <p className="text-gray-300 leading-relaxed">
-//               I follow a modular approach, ensuring codebases remain scalable
-//               and easy for future contributors. My experience includes
-//               full-stack web development, mobile development, and DevOps tools
-//               like Docker and Kubernetes.
-//             </p>
-//           </motion.div>
-
-//           {/* EDUCATION */}
-//           <motion.div className="space-y-6" variants={FADE_UP}>
-//             <h2 className="font-semibold text-2xl">Education</h2>
-
-//             <div className="p-5 rounded-xl bg-brand-dark space-y-2">
-//               <h3 className="font-semibold text-xl">
-//                 Bachelor of Engineering (B.E.) in Computer Science
-//               </h3>
-//               <p className="text-brand-red text-lg capitalize">
-//                 Lagos State University, Lagos, Nigeria
-//               </p>
-//               <p className="flex items-center gap-2">
-//                 CGPA:
-//                 <span className="text-brand-red text-xl font-semibold">
-//                   4.40/5
-//                 </span>
-//               </p>
-//             </div>
-
-//             <div className="flex justify-center">
-//               <Button
-//                 label="Download Resume"
-//                 iconPosition="left"
-//                 icon={<Download />}
-//               />
-//             </div>
-
-//             <div className="grid grid-cols-2 gap-5">
-//               {edu.map((item, i) => (
-//                 <motion.div
-//                   key={i}
-//                   className="flex flex-col items-center py-5 bg-brand-dark rounded-xl"
-//                   variants={FADE_UP}
-//                 >
-//                   <h3 className="text-brand-red font-bold text-2xl">
-//                     {item.number}
-//                   </h3>
-//                   <p className="capitalize text-lg">{item.label}</p>
-//                 </motion.div>
-//               ))}
-//             </div>
-//           </motion.div>
-//         </div>
-
-//         {/* RIGHT COLUMN — SKILLS */}
-//         <motion.div className="space-y-8" variants={CONTAINER}>
-//           <h2 className="font-semibold text-2xl">Skills & Expertise</h2>
-
-//           {Skills.map((skill, idx) => (
-//             <motion.div
-//               key={idx}
-//               className="p-5 rounded-2xl bg-brand-dark shadow-xl space-y-4 hover:scale-[1.03] transition-transform"
-//               variants={FADE_UP}
-//             >
-//               <div className="flex items-center gap-4">
-//                 <div
-//                   className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-r ${skill.color}`}
-//                 >
-//                   {skill.icon}
-//                 </div>
-//                 <h3 className="text-2xl font-semibold">{skill.title}</h3>
-//               </div>
-
-//               <div className="flex flex-wrap gap-3">
-//                 {skill.tech.map((tech, i) => (
-//                   <span
-//                     key={i}
-//                     className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm capitalize"
-//                   >
-//                     {tech}
-//                   </span>
-//                 ))}
-//               </div>
-//             </motion.div>
-//           ))}
-//         </motion.div>
-//       </div>
-
-//       {/* EXPERIENCE */}
-//       <motion.div className="space-y-6" variants={CONTAINER}>
-//         <h2 className="text-2xl font-semibold text-center">Experience</h2>
-
-//         {Exp.map((exp, i) => (
-//           <motion.div
-//             key={i}
-//             className="rounded-xl bg-brand-red p-[2px]"
-//             variants={FADE_UP}
-//           >
-//             <div className="bg-brand-dark p-5 rounded-xl space-y-3">
-//               <header className="flex flex-col sm:flex-row sm:justify-between gap-2">
-//                 <div>
-//                   <h3 className="text-xl font-semibold capitalize">
-//                     {exp.title}
-//                   </h3>
-//                   <p className="text-brand-red capitalize">{exp.place}</p>
-//                 </div>
-//                 <span>{exp.date}</span>
-//               </header>
-
-//               <p className="text-gray-300">{exp.desc}</p>
-
-//               <div>
-//                 <h4 className="font-medium text-lg mb-1">Key Features</h4>
-//                 <ul className="list-disc list-inside text-gray-300 space-y-1">
-//                   {exp.features.map((f, idx) => (
-//                     <li key={idx}>{f}</li>
-//                   ))}
-//                 </ul>
-//               </div>
-//             </div>
-//           </motion.div>
-//         ))}
-//       </motion.div>
-//     </motion.div>
-//   );
-// }
 "use client";
 
 import Button from "@/components/Button";
@@ -187,7 +5,6 @@ import { edu, Exp, Skills } from "@/data/data";
 import { Download } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
-// Container with stagger effect
 const CONTAINER: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -199,7 +16,6 @@ const CONTAINER: Variants = {
   },
 };
 
-// Fade up from bottom
 const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -209,7 +25,6 @@ const FADE_UP: Variants = {
   },
 };
 
-// Fade in from left
 const FADE_LEFT: Variants = {
   hidden: { opacity: 0, x: -30 },
   visible: {
@@ -219,7 +34,6 @@ const FADE_LEFT: Variants = {
   },
 };
 
-// Fade in from right
 const FADE_RIGHT: Variants = {
   hidden: { opacity: 0, x: 30 },
   visible: {
@@ -229,7 +43,6 @@ const FADE_RIGHT: Variants = {
   },
 };
 
-// Scale up effect
 const SCALE_UP: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: {
@@ -239,7 +52,6 @@ const SCALE_UP: Variants = {
   },
 };
 
-// Stats card animation
 const STAT_CARD: Variants = {
   hidden: { opacity: 0, scale: 0.8, y: 20 },
   visible: {

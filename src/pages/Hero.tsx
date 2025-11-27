@@ -4,17 +4,15 @@ import TechStack from "@/components/TechStack";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { techStack } from "@/data/data";
 import { useEffect, useState } from "react";
-// 1. Import motion
 import { motion } from "framer-motion";
 
-// Define the animation variants for reuse
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // Delay between each child item
-      delayChildren: 0.3, // Initial delay before children start animating
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
     },
   },
 };
@@ -39,17 +37,15 @@ export default function Hero() {
     return () => window.removeEventListener("resize", screensize);
   }, []);
 
-  // Download handler function
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/Eseigbe-Samuel-Osezele-Resume-2.pdf"; // Path to your PDF in the public folder
-    link.download = "Samuel_Eseigbe_Resume.pdf"; // Name for the downloaded file
+    link.href = "/Eseigbe-Samuel-Osezele-Resume-2.pdf";
+    link.download = "Samuel_Eseigbe_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
-  // Scroll to projects section
   const handleViewProjects = () => {
     const projectSection = document.getElementById("project");
     if (projectSection) {
@@ -64,7 +60,6 @@ export default function Hero() {
     >
       {isMobile ? "" : <BackgroundBeams className="opacity-90 " />}
 
-      {/* 2. Wrap the text section with motion.section and apply animation */}
       <motion.section
         className="text-center space-y-3 p-4"
         variants={containerVariants}
@@ -99,7 +94,6 @@ export default function Hero() {
         </motion.p>
       </motion.section>
 
-      {/* 3. Wrap the tech stack section and apply staggered animation to children */}
       <motion.section
         className="w-full"
         initial="hidden"
@@ -119,7 +113,6 @@ export default function Hero() {
         </div>
       </motion.section>
 
-      {/* 4. Wrap the button section and apply entrance animation */}
       <motion.section
         className="grid md:flex gap-5 "
         variants={containerVariants}
