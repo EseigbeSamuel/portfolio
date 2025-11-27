@@ -189,7 +189,7 @@ export default function About() {
                       delay: 0.2 + i * 0.1,
                     }}
                   >
-                    {item.number}
+                    {item.number}+
                   </motion.h3>
                   <p className="capitalize text-lg">{item.label}</p>
                 </motion.div>
@@ -198,7 +198,7 @@ export default function About() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT COLUMN — SKILLS */}
+        {/* SKILLS */}
         <motion.div
           className="space-y-8"
           initial="hidden"
