@@ -1,10 +1,13 @@
+import { ExternalLink } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import Button from "./Button";
 
 interface ProjectDescriptionProps {
   image: StaticImageData;
   title: string;
   desc: string;
   tech: string[];
+  link?: string;
 }
 
 export default function ProjectDescription({
@@ -12,6 +15,7 @@ export default function ProjectDescription({
   title,
   desc,
   tech,
+  link,
 }: ProjectDescriptionProps) {
   return (
     <div className=" text-white">
@@ -35,6 +39,19 @@ export default function ProjectDescription({
             ))}
           </div>
         </div>
+        {link ? (
+          <div className="pt-4 border-t border-gray-700">
+            <Button
+              label="Live Demo"
+              fullWidth={true}
+              onClick={() => window.open(link, "_blank")}
+              variant="secondary"
+              icon={<ExternalLink className="w-4 h-4" />}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </section>
     </div>
   );

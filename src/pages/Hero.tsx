@@ -39,7 +39,7 @@ export default function Hero() {
 
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/Eseigbe-Samuel-Osezele-Resume-2.pdf";
+    link.href = "/Eseigbe-Samuel-Osezele-Resume.pdf";
     link.download = "Samuel_Eseigbe_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -114,7 +114,7 @@ export default function Hero() {
       </motion.section>
 
       <motion.section
-        className="grid md:flex gap-5 "
+        className="grid items-center md:flex gap-5 "
         variants={containerVariants}
         initial="hidden"
         animate="visible"

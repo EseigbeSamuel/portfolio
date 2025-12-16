@@ -78,6 +78,7 @@ export default function Projects() {
                     title={p.title}
                     desc={p.desc}
                     tech={p.tech}
+                    link={p.link}
                   />
                 )
               }

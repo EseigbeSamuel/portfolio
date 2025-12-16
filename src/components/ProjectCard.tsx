@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import Button from "./Button";
+import { ExternalLink } from "lucide-react";
 
 interface SubProps {
   title: string;
@@ -40,10 +41,10 @@ export default function ProjectCard({
       <section className="p-4">
         <div className="mt-4">
           <h1 className="text-xl font-bold">{title}</h1>
-          <p className="text-gray-500 line-clamp-3">{desc}</p>
+          <p className="text-gray-500 line-clamp-4">{desc}</p>
         </div>
 
-        <section>
+        {/* <section>
           <div className="flex gap-2 mt-3 flex-wrap">
             {tech.map((tech, i) => (
               <span
@@ -54,15 +55,20 @@ export default function ProjectCard({
               </span>
             ))}
           </div>
-        </section>
+        </section> */}
       </section>
       <section className="p-4">
         {link ? (
-          <Button
-            label="Live Website"
-            fullWidth={true}
-            onClick={() => window.open(link, "_blank")}
-          />
+          <div className="flex w-full items-center gap-4">
+            <Button
+              label="Live Demo"
+              fullWidth={true}
+              onClick={() => window.open(link, "_blank")}
+              variant="secondary"
+              icon={<ExternalLink className="w-4 h-4" />}
+            />
+            <Button label="View Details" fullWidth={true} onClick={onClick} />
+          </div>
         ) : onClick ? (
           <Button label="View Details" fullWidth={true} onClick={onClick} />
         ) : null}
