@@ -9,7 +9,7 @@ import Projects from "@/pages/Projects";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full  bg-black text-white ">
+    <main className="relative min-h-screen w-full overflow-x-hidden  bg-black text-white ">
       {/* <BackgroundBeams className="opacity-90 " /> */}
       <Navbar />
       <div className="z-10 w-full py-[50px] px-[15px] lg:py-[50px] lg:px-[50px] 2xl:px-[100px] 2xl:items-center 2xl:flex 2xl:flex-col  ">

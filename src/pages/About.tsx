@@ -70,7 +70,7 @@ export default function About() {
   return (
     <motion.div
       id="about"
-      className="space-y-12 max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-[50px]"
+      className="space-y-12 max-w-[1440px] px-4 md:px-6 lg:px-8 py-[50px]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-10%" }}
