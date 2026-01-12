@@ -65,6 +65,14 @@ const STAT_CARD: Variants = {
     },
   },
 };
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = "/Eseigbe-Samuel-Osezele-Resume.pdf";
+    link.download = "Samuel_Eseigbe_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
 export default function About() {
   return (
@@ -162,6 +170,7 @@ export default function About() {
                 label="Download Resume"
                 iconPosition="left"
                 icon={<Download />}
+                onClick={handleDownloadResume}
               />
             </motion.div>
 
