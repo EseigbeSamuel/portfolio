@@ -65,9 +65,9 @@ const STAT_CARD: Variants = {
     },
   },
 };
-  const handleDownloadResume = () => {
+ const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/Eseigbe-Samuel-Osezele-Resume.pdf";
+    link.href = "/Samuel-Osezele-Eseigbe-Resume.pdf";
     link.download = "Samuel_Eseigbe_Resume.pdf";
     document.body.appendChild(link);
     link.click();
