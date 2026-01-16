@@ -70,6 +70,17 @@ interface techProps {
   title: string;
 }
 
+// export const techStack: techProps[] = [
+//   { image: "https://skillicons.dev/icons?i=react", title: "React" },
+//   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
+//   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
+//   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
+//   { image: "https://skillicons.dev/icons?i=nestjs", title: "Nest.js" },
+//   { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
+//   { image: "https://skillicons.dev/icons?i=mongodb", title: "MongoDB" },
+//   { image: "https://skillicons.dev/icons?i=postgres", title: "PostgreSQL" },
+// ];
+
 export const techStack: techProps[] = [
   { image: "https://skillicons.dev/icons?i=react", title: "React" },
   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
@@ -79,6 +90,12 @@ export const techStack: techProps[] = [
   { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
   { image: "https://skillicons.dev/icons?i=mongodb", title: "MongoDB" },
   { image: "https://skillicons.dev/icons?i=postgres", title: "PostgreSQL" },
+  {
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+    title: "C#",
+  },
+  { image: "https://skillicons.dev/icons?i=dotnet", title: ".NET" },
 ];
 
 interface eduProps {
@@ -158,7 +175,7 @@ interface expProps {
 
 export const Exp: expProps[] = [
   {
-    title: "junior frontend developer",
+    title: "Software developer",
     place: "elsoft tech hub",
     date: "january 2025 - present",
     desc: "Contributed developed and delivered responsive, user-centric web and mobile applications. ",
@@ -186,5 +203,5 @@ export const Exp: expProps[] = [
 ];
 
 // https://github.com/EseigbeSamuel
-// https://www.linkedin.com/in/eseigbe-samuel-ba6891333/
+// https://www.linkedin.com/in/samuel-eseigbe-ba6891333/
 // https://x.com/muel_se

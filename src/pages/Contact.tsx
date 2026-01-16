@@ -2,12 +2,11 @@
 import { Locate, Mail } from "lucide-react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-// Import motion
+
 import { motion, Variants } from "framer-motion";
 
-// --- Animation Variants ---
 
-// Container for staggered entrance (Heading/Paragraph)
+
 const textContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -19,13 +18,11 @@ const textContainerVariants: Variants = {
   },
 };
 
-// Item variant for subtle fade-in and lift (used for H1, P, and main section blocks)
 const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: { y: 0, opacity: 1 },
 };
 
-// Variant for the social icons (zoom in)
 const iconVariants: Variants = {
   hidden: { scale: 0, opacity: 0 },
   visible: {
@@ -35,12 +32,10 @@ const iconVariants: Variants = {
   },
 };
 
-// --- Component ---
 
 export default function Contact() {
   return (
     <div id="contact" className="space-y-10 py-[60px] max-w-[1440px]">
-      {/* 1. Animate the Heading and Description Section */}
       <motion.section
         variants={textContainerVariants}
         initial="hidden"
@@ -63,9 +58,7 @@ export default function Contact() {
         </motion.p>
       </motion.section>
 
-      {/* 2. Animate the main content grid/flex container */}
       <div className="grid lg:flex w-full justify-between gap-10">
-        {/* Left Column: Contact and Social Links */}
         <motion.section
           className="space-y-7 "
           variants={textContainerVariants}
@@ -78,7 +71,6 @@ export default function Contact() {
               Contact Information
             </motion.h2>
 
-            {/* Email Contact Block */}
             <motion.div
               className="flex items-center gap-3"
               variants={itemVariants}
@@ -94,7 +86,6 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* Location Contact Block */}
             <motion.div
               className="flex items-center gap-3"
               variants={itemVariants}
@@ -111,7 +102,6 @@ export default function Contact() {
             </motion.div>
           </div>
 
-          {/* Social Links Block */}
           <div>
             <motion.h2
               className="font-bold text-2xl mb-3"
@@ -121,9 +111,8 @@ export default function Contact() {
             </motion.h2>
             <motion.div
               className="flex space-x-4"
-              variants={textContainerVariants} // Reuse container for staggering icons
+              variants={textContainerVariants} 
             >
-              {/* LinkedIn */}
               <motion.div variants={iconVariants}>
                 <Link
                   href="https://www.linkedin.com/in/samuel-eseigbe-ba6891333/"
@@ -134,7 +123,6 @@ export default function Contact() {
                 </Link>
               </motion.div>
 
-              {/* Twitter */}
               <motion.div variants={iconVariants}>
                 <Link
                   href="https://x.com/muel_se"
@@ -145,7 +133,6 @@ export default function Contact() {
                 </Link>
               </motion.div>
 
-              {/* GitHub */}
               <motion.div variants={iconVariants}>
                 <Link
                   href="https://github.com/EseigbeSamuel"
@@ -159,7 +146,6 @@ export default function Contact() {
           </div>
         </motion.section>
 
-        {/* Right Column: What I'm Looking For */}
         <motion.section
           className=""
           initial={{ opacity: 0, x: 50 }}

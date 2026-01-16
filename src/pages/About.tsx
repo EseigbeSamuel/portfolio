@@ -107,9 +107,9 @@ export default function About() {
         </motion.p>
       </motion.div>
 
-      {/* GRID WRAPPER */}
+     
       <div className="grid lg:grid-cols-2 gap-10">
-        {/* LEFT COLUMN */}
+        
         <motion.div
           className="space-y-10"
           initial="hidden"
@@ -315,7 +315,7 @@ export default function About() {
                   </h3>
                   <p className="text-brand-red capitalize">{exp.place}</p>
                 </div>
-                <span>{exp.date}</span>
+                <span className="capitalize ">{exp.date}</span>
               </motion.header>
 
               <motion.p

@@ -114,7 +114,7 @@ export default function Hero() {
       </motion.section>
 
       <motion.section
-        className="grid items-center md:flex gap-5 "
+        className="flex flex-col justify-center items-center md:flex-row gap-5 "
         variants={containerVariants}
         initial="hidden"
         animate="visible"

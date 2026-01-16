@@ -21,7 +21,7 @@ export default function Projects() {
   return (
     <motion.div
       id="project"
-      className="gap-10 flex flex-col py-[60px] max-w-[1440px]"
+      className="gap-10 w-full flex flex-col py-[60px] max-w-[1440px]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
