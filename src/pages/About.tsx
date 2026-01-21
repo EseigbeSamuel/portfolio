@@ -65,14 +65,14 @@ const STAT_CARD: Variants = {
     },
   },
 };
- const handleDownloadResume = () => {
-    const link = document.createElement("a");
-    link.href = "/Samuel-Osezele-Eseigbe-Resume.pdf";
-    link.download = "Samuel_Eseigbe_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+const handleDownloadResume = () => {
+  const link = document.createElement("a");
+  link.href = "/Samuel-Osezele-Eseigbe-Resume.pdf";
+  link.download = "Samuel_Eseigbe_Resume.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 export default function About() {
   return (
@@ -107,9 +107,7 @@ export default function About() {
         </motion.p>
       </motion.div>
 
-     
       <div className="grid lg:grid-cols-2 gap-10">
-        
         <motion.div
           className="space-y-10"
           initial="hidden"
@@ -144,6 +142,17 @@ export default function About() {
           {/* EDUCATION */}
           <motion.div className="space-y-6" variants={FADE_LEFT}>
             <h2 className="font-semibold text-2xl">Education</h2>
+            <motion.div
+              className="p-5 rounded-xl bg-brand-dark space-y-2"
+              variants={SCALE_UP}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <h3 className="font-semibold text-xl">Software Development</h3>
+              <p className="text-brand-red text-lg capitalize">
+                BAFUTO Institute of Information and Technology, Lagos, Nigeria
+              </p>
+            </motion.div>
 
             <motion.div
               className="p-5 rounded-xl bg-brand-dark space-y-2"
@@ -152,7 +161,7 @@ export default function About() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <h3 className="font-semibold text-xl">
-                Bachelor of Engineering (B.E.) in Computer Science
+                Bachelor of Arts (B.A.) in English Language
               </h3>
               <p className="text-brand-red text-lg capitalize">
                 Lagos State University, Lagos, Nigeria
