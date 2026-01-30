@@ -5,8 +5,6 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 import { motion, Variants } from "framer-motion";
 
-
-
 const textContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -32,7 +30,6 @@ const iconVariants: Variants = {
   },
 };
 
-
 export default function Contact() {
   return (
     <div id="contact" className="space-y-10 py-[60px] max-w-[1440px]">
@@ -49,7 +46,7 @@ export default function Contact() {
           Get in Touch
         </motion.h1>
         <motion.p
-          className="lg:text-xl text-center xl:px-[300px]"
+          className="lg:text-xl text-center xl:px-[300px] font-mono"
           variants={itemVariants}
         >
           I'm always interested in new opportunities and exciting projects.
@@ -71,7 +68,7 @@ export default function Contact() {
               Contact Information
             </motion.h2>
 
-            <motion.div
+            {/* <motion.div
               className="flex items-center gap-3"
               variants={itemVariants}
             >
@@ -84,6 +81,25 @@ export default function Contact() {
                 <h3>Email</h3>
                 <p className="text-brand-red">eseigbesamuel810@gmail.com</p>
               </div>
+            </motion.div> */}
+            <motion.div
+              className="flex items-center gap-3"
+              variants={itemVariants}
+            >
+              <a
+                href="mailto:eseigbesamuel810@gmail.com?subject=Portfolio Inquiry"
+                className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+              >
+                <div
+                  className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-emerald-500 text-white text-2xl`}
+                >
+                  <Mail />
+                </div>
+                <div>
+                  <h3>Email</h3>
+                  <p className="text-brand-red">eseigbesamuel810@gmail.com</p>
+                </div>
+              </a>
             </motion.div>
 
             <motion.div
@@ -111,7 +127,7 @@ export default function Contact() {
             </motion.h2>
             <motion.div
               className="flex space-x-4"
-              variants={textContainerVariants} 
+              variants={textContainerVariants}
             >
               <motion.div variants={iconVariants}>
                 <Link

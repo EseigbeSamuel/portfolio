@@ -105,7 +105,7 @@ interface eduProps {
 export const edu: eduProps[] = [
   { number: 4, label: "projects built" },
   { number: 20, label: "technologies" },
-  { number: 2, label: "years experience" },
+  { number: 3, label: "years experience" },
   { number: 3, label: "platforms" },
 ];
 

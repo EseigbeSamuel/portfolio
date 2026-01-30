@@ -96,7 +96,7 @@ export default function About() {
           About Me
         </motion.h1>
         <motion.p
-          className="lg:text-xl text-gray-300 xl:px-[300px]"
+          className="lg:text-xl text-gray-300 xl:px-[300px] font-mono"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

@@ -42,7 +42,7 @@ export default function Projects() {
         }}
       >
         <h1 className="font-bold text-3xl lg:text-5xl">Featured Projects</h1>
-        <p className="lg:text-xl text-center xl:px-[300px]">
+        <p className="lg:text-xl text-center xl:px-[300px] font-mono ">
           A showcase of my diverse development projects spanning web
           applications and mobile apps.
         </p>
@@ -79,7 +79,7 @@ export default function Projects() {
                     desc={p.desc}
                     tech={p.tech}
                     link={p.link}
-                  />
+                  />,
                 )
               }
               {...p}

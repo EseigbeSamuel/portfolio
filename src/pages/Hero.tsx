@@ -67,10 +67,10 @@ export default function Hero() {
         animate="visible"
       >
         <motion.h1
-          className="text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent"
+          className=" text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent"
           variants={itemVariants}
         >
-          Samuel Eseigbe{" "}
+          Samuel Eseigbe
         </motion.h1>
         <motion.h1
           className=" text-4xl lg:text-7xl font-bold "
@@ -88,9 +88,9 @@ export default function Hero() {
           </span>{" "}
           across platforms
         </motion.h2>
-        <motion.p className=" lg:text-xl" variants={itemVariants}>
-          Specializing in React, React native, Node.js and Angular. Creating
-          seamless experience from web to mobile
+        <motion.p className=" lg:text-xl font-mono" variants={itemVariants}>
+          Specializing in React, React native, Angular, Node.js and ASP.NET.
+          Creating seamless experience from web to mobile
         </motion.p>
       </motion.section>
 
