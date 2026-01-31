@@ -102,7 +102,7 @@ export default function Navbar() {
                 key={n.path}
                 href={n.path}
                 className={`
-           text-xs sm:text-lg font-semibold transition-colors
+           text-xs sm:text-lg font-semibold font-heading transition-colors
             ${pathname === n.path ? "text-brand-red" : " hover:text-brand-red"}
           `}
               >
