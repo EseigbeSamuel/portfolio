@@ -202,6 +202,17 @@ export const Exp: expProps[] = [
       "Writing reusable and modular components in React to simplify code maintenance and scalability",
     ],
   },
+  {
+    title: "web development instructor",
+    place: "BAFUTO institute of information and technology",
+    date: "march 2023 - may 2024",
+    desc: "Mentored and guided 20+ students through the fundamentals of web development, covering HTML, CSS, JavaScript, and React.",
+    features: [
+      "Increased student project completion rates by implementing interactive, project-based learning modules.",
+      "Facilitated hands-on coding sessions and code reviews, ensuring students adopted industry best practices and clean coding standards.",
+      "Designed and delivered a comprehensive curriculum that transitioned students from basic coding concepts to building complex, modern web applications.",
+    ],
+  },
   // { title: "", place: "", date: "", desc: "", features: [""] },
 ];
 
