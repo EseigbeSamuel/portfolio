@@ -64,7 +64,7 @@ export default function Navbar() {
         <section>
           <div className="flex space-x-4">
             <Link
-              href="https://www.linkedin.com/in/samuel-eseigbe-ba6891333/"
+              href="https://www.linkedin.com/in/samuel-eseigbe/"
               target="_blank"
               rel="noopener noreferrer"
             >

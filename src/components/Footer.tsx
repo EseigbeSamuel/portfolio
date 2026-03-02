@@ -23,10 +23,31 @@ export default function Footer() {
             amazing together!
           </p>
         </div>
+
         <div className="flex space-x-4">
-          <FaLinkedin className="w-6 h-6 stroke-current" />
-          <FaTwitter className="w-6 h-6 stroke-current" />
-          <FaGithub className="w-6 h-6 stroke-current" />
+          <Link
+            href="https://www.linkedin.com/in/samuel-eseigbe/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="w-6 h-6 stroke-current" />
+          </Link>
+
+          <Link
+            href="https://x.com/muel_se"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter className="w-6 h-6 stroke-current" />
+          </Link>
+
+          <Link
+            href="https://github.com/EseigbeSamuel"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub className="w-6 h-6 stroke-current" />
+          </Link>
         </div>
       </section>
       <section className="space-y-3 lg:space-y-5">
