@@ -1,52 +1,9 @@
-// import type { Metadata } from "next";
-// import { Geist, Geist_Mono, Modak } from "next/font/google";
-// import "./globals.css";
-// import { ModalProvider } from "@/contexts/ModalContext";
-// import Modal from "@/components/Modal";
-
-// // const geistSans = Geist({
-// //   variable: "--font-geist-sans",
-// //   subsets: ["latin"],
-// // });
-
-// // const geistMono = Geist_Mono({
-// //   variable: "--font-geist-mono",
-// //   subsets: ["latin"],
-// // });
-// const modak = Modak({
-//   variable: "--font-modak",
-//   weight: "400",
-//   subsets: ["latin"],
-// });
-
-// export const metadata: Metadata = {
-//   title: "Samuel Eseigbe",
-//   description: "Software Developer Portfolio",
-//   keywords: ["eseigbe", "samuel"],
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <html lang="en">
-//       <body className={` ${modak.variable} antialiased`}>
-//         <ModalProvider>
-//           {children}
-//           <Modal />
-//         </ModalProvider>
-//       </body>
-//     </html>
-//   );
-// }
-
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ModalProvider } from "@/contexts/ModalContext";
 import Modal from "@/components/Modal";
+import { Analytics } from "@vercel/analytics/next";
 
 // Display font for headings - bold, modern, tech-forward
 const spaceGrotesk = Space_Grotesk({
@@ -106,6 +63,7 @@ export default function RootLayout({
           <Modal />
         </ModalProvider>
       </body>
+      <Analytics />
     </html>
   );
 }
