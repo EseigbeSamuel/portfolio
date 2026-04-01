@@ -6,6 +6,7 @@ import flexyermy from "@/assest/images/flexydermy.png";
 import xp from "@/assest/images/xp.png";
 import esma from "@/assest/images/esma.png";
 import vegeel from "@/assest/images/vegeel.png";
+import elsoftPM from "@/assest/images/PM.png";
 
 export const navitems = [
   { path: "#home", label: "Home" },
@@ -30,6 +31,22 @@ export const projectData: projectProps[] = [
   //   tech: ["next.js", "Tailwind CSS", "framer motion"],
   // },
   {
+    image: elsoftPM,
+    title: "ElsoftPM",
+    desc: "ElsoftPM (Elsoft Project Management System) is a proprietary project management application developed collaboratively at Elsoft Tech Hub. The platform enables teams to efficiently manage tasks, track project progress, assign responsibilities, and streamline communication across multiple projects. Designed with scalability and performance in mind, it provides a centralized workflow system for modern development teams.",
+    tech: [
+      "react",
+      "nestJS",
+      "postgreSQL",
+      "tanstack query",
+      "tanstack table",
+      "recharts",
+      "websocket",
+      "tailwind CSS",
+      "Zustand",
+    ],
+  },
+  {
     image: flexyermy,
     title: "Flexydemy",
     desc: "Flexydermy is an educational platform that seamlessly connects tutors and students for online learning. The platform features integrated video calling for live lectures, secure payment processing, and robust file management allowing users to upload and download course materials and documents. Flexydermy provides a complete virtual classroom experience, enabling efficient knowledge transfer between educators and learners in a unified environment.",
@@ -44,8 +61,9 @@ export const projectData: projectProps[] = [
       "next.js",
       "tailwind CSS",
       "shadcn",
-      "redux",
-      "tanstack",
+      "Zustand",
+      "tanstack query",
+      "tanstack table",
       "recharts",
       "websocket",
     ],
@@ -69,17 +87,6 @@ interface techProps {
   image: string;
   title: string;
 }
-
-// export const techStack: techProps[] = [
-//   { image: "https://skillicons.dev/icons?i=react", title: "React" },
-//   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
-//   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
-//   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
-//   { image: "https://skillicons.dev/icons?i=nestjs", title: "Nest.js" },
-//   { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
-//   { image: "https://skillicons.dev/icons?i=mongodb", title: "MongoDB" },
-//   { image: "https://skillicons.dev/icons?i=postgres", title: "PostgreSQL" },
-// ];
 
 export const techStack: techProps[] = [
   { image: "https://skillicons.dev/icons?i=react", title: "React" },
