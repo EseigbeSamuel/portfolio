@@ -81,13 +81,13 @@ export default function Modal() {
             aria-labelledby="modal-title"
           >
             {/* Header */}
-            <div className="flex w-full justify-end absolute z-20 ">
+            <div className="flex w-full justify-end absolute z-20 top-3 right-3">
               <button
                 onClick={closeModal}
-                className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800 transition-colors"
+                className="rounded-full p-2 bg-black/50 text-white hover:bg-black/80 backdrop-blur-md transition-colors"
                 aria-label="Close modal"
               >
-                <X className="md:size-[40px] " color="red" />
+                <X className="w-6 h-6" />
               </button>
             </div>
 

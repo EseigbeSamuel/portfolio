@@ -49,7 +49,7 @@ export const projectData: projectProps[] = [
   {
     image: flexyermy,
     title: "Flexydemy",
-    desc: "Flexydermy is an educational platform that seamlessly connects tutors and students for online learning. The platform features integrated video calling for live lectures, secure payment processing, and robust file management allowing users to upload and download course materials and documents. Flexydermy provides a complete virtual classroom experience, enabling efficient knowledge transfer between educators and learners in a unified environment.",
+    desc: "Flexydemy is an educational platform that seamlessly connects tutors and students for online learning. The platform features integrated video calling for live lectures, secure payment processing, and robust file management allowing users to upload and download course materials and documents. Flexydemy provides a complete virtual classroom experience, enabling efficient knowledge transfer between educators and learners in a unified environment.",
     tech: ["angular", "tailwind CSS", "rxjs", "recharts", "websocket"],
     link: "http://dev.flexydemy.com/",
   },
@@ -83,6 +83,28 @@ export const projectData: projectProps[] = [
   },
 ];
 
+// interface techProps {
+//   image: string;
+//   title: string;
+// }
+
+// export const techStack: techProps[] = [
+//   { image: "https://skillicons.dev/icons?i=react", title: "React" },
+//   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
+//   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
+//   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
+//   { image: "https://skillicons.dev/icons?i=nestjs", title: "Nest.js" },
+//   { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
+//   { image: "https://skillicons.dev/icons?i=mongodb", title: "MongoDB" },
+//   { image: "https://skillicons.dev/icons?i=postgres", title: "PostgreSQL" },
+//   {
+//     image:
+//       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+//     title: "C#",
+//   },
+//   { image: "https://skillicons.dev/icons?i=dotnet", title: ".NET" },
+// ];
+
 interface techProps {
   image: string;
   title: string;
@@ -90,6 +112,11 @@ interface techProps {
 
 export const techStack: techProps[] = [
   { image: "https://skillicons.dev/icons?i=react", title: "React" },
+  {
+    image: "https://cdn.simpleicons.org/expo/white",
+    title: "Expo",
+  },
+  { image: "https://skillicons.dev/icons?i=supabase", title: "Supabase" },
   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
@@ -110,7 +137,7 @@ interface eduProps {
   label: string;
 }
 export const edu: eduProps[] = [
-  { number: 4, label: "projects built" },
+  { number: 6, label: "projects built" },
   { number: 20, label: "technologies" },
   { number: 3, label: "years experience" },
   { number: 3, label: "platforms" },
