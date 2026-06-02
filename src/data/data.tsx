@@ -83,28 +83,6 @@ export const projectData: projectProps[] = [
   },
 ];
 
-// interface techProps {
-//   image: string;
-//   title: string;
-// }
-
-// export const techStack: techProps[] = [
-//   { image: "https://skillicons.dev/icons?i=react", title: "React" },
-//   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
-//   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
-//   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
-//   { image: "https://skillicons.dev/icons?i=nestjs", title: "Nest.js" },
-//   { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
-//   { image: "https://skillicons.dev/icons?i=mongodb", title: "MongoDB" },
-//   { image: "https://skillicons.dev/icons?i=postgres", title: "PostgreSQL" },
-//   {
-//     image:
-//       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
-//     title: "C#",
-//   },
-//   { image: "https://skillicons.dev/icons?i=dotnet", title: ".NET" },
-// ];
-
 interface techProps {
   image: string;
   title: string;
@@ -116,12 +94,12 @@ export const techStack: techProps[] = [
     image: "https://cdn.simpleicons.org/expo/white",
     title: "Expo",
   },
-  { image: "https://skillicons.dev/icons?i=supabase", title: "Supabase" },
   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
-  { image: "https://skillicons.dev/icons?i=nestjs", title: "Nest.js" },
-  { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
+  // { image: "https://skillicons.dev/icons?i=nestjs", title: "Nest.js" },
+  // { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
+  { image: "https://skillicons.dev/icons?i=supabase", title: "Supabase" },
   { image: "https://skillicons.dev/icons?i=mongodb", title: "MongoDB" },
   { image: "https://skillicons.dev/icons?i=postgres", title: "PostgreSQL" },
   {
@@ -174,6 +152,7 @@ export const Skills: skillsProps[] = [
       "C#",
       ".NET",
       "ASP.NET",
+      "Supabase",
       "MongoDB",
       "PostgreSQL",
       "Firebase",
