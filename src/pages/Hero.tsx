@@ -89,8 +89,8 @@ export default function Hero() {
           across platforms
         </motion.h2>
         <motion.p className=" lg:text-xl font-mono" variants={itemVariants}>
-          Specializing in Next.js, React native, Node.js and ASP.NET. Creating
-          seamless experience from web to mobile
+          Specializing in Next.js, React native, Webflow, Node.js and ASP.NET.
+          Creating seamless experience from web to mobile
         </motion.p>
       </motion.section>
 
