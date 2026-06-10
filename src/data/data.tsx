@@ -96,6 +96,7 @@ export const techStack: techProps[] = [
   },
   { image: "https://cdn.simpleicons.org/webflow", title: "Webflow" },
   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
+  { image: "https://skillicons.dev/icons?i=svelte", title: "Svelte" },
   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
   { image: "https://skillicons.dev/icons?i=supabase", title: "Supabase" },
@@ -138,6 +139,7 @@ export const Skills: skillsProps[] = [
       "TypeScript",
       "Next.js",
       "angular",
+      "Svelte",
     ],
   },
   {
