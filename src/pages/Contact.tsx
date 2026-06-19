@@ -141,7 +141,7 @@ export default function Contact() {
 
               <motion.div variants={iconVariants}>
                 <Link
-                  href="https://x.com/muel_se"
+                  href="https://x.com/osezelle"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

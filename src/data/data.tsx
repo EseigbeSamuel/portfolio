@@ -232,4 +232,4 @@ export const Exp: expProps[] = [
 
 // https://github.com/EseigbeSamuel
 // https://www.linkedin.com/in/samuel-eseigbe-ba6891333/
-// https://x.com/muel_se
+// https://x.com/osezelle

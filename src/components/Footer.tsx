@@ -34,7 +34,7 @@ export default function Footer() {
           </Link>
 
           <Link
-            href="https://x.com/muel_se"
+            href="https://x.com/osezelle"
             target="_blank"
             rel="noopener noreferrer"
           >
