@@ -2,10 +2,11 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
-import Hero from "@/pages/Hero";
-import Projects from "@/pages/Projects";
+import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
+import Hero from "@/components/sections/Hero";
+import Projects from "@/components/sections/Projects";
+import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
@@ -16,9 +17,11 @@ export default function Home() {
         <Hero />
         <Projects />
         <About />
+        <Testimonials />
         <Contact />
       </div>
       <Footer />
     </main>
   );
 }
+

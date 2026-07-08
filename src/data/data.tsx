@@ -1,17 +1,18 @@
 import { ReactNode } from "react";
 import { FaReact, FaNodeJs, FaMobileAlt, FaCloud } from "react-icons/fa";
 import { StaticImageData } from "next/image";
-// import portfolio from "@/assest/images/3.png";
-import flexyermy from "@/assest/images/flexydermy.png";
-import xp from "@/assest/images/xp.png";
-import esma from "@/assest/images/esma.png";
-import vegeel from "@/assest/images/vegeel.png";
-import elsoftPM from "@/assest/images/PM.png";
+// import portfolio from "@/assets/images/3.png";
+import flexyermy from "@/assets/images/flexydermy.png";
+import xp from "@/assets/images/xp.png";
+import esma from "@/assets/images/esma.png";
+import vegeel from "@/assets/images/vegeel.png";
+import elsoftPM from "@/assets/images/PM.png";
 
 export const navitems = [
   { path: "#home", label: "Home" },
   { path: "#project", label: "Projects" },
   { path: "#about", label: "About" },
+  { path: "#testimonials", label: "Testimonials" },
   { path: "#contact", label: "Contact" },
 ];
 
@@ -233,3 +234,46 @@ export const Exp: expProps[] = [
 // https://github.com/EseigbeSamuel
 // https://www.linkedin.com/in/samuel-eseigbe-ba6891333/
 // https://x.com/osezelle
+
+export interface testimonialProps {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  rating: number;
+}
+
+export const testimonialsData: testimonialProps[] = [
+  {
+    quote:
+      "Samuel is an exceptional software engineer. While working on ElsoftPM and ESMA, he demonstrated deep technical expertise, particularly in Next.js and WebSockets. He is a structured thinker and an invaluable team player.",
+    name: "John Elesho",
+    role: "CEO & Founder",
+    company: "Elsoft Tech Hub",
+    rating: 5,
+  },
+  {
+    quote:
+      "During his internship, Samuel excelled at building robust compliance features and integrating complex APIs. His React skills and commitment to clean code principles helped us ship critical modules on schedule.",
+    name: "Emmanuel Igwenagu",
+    role: "Lead Frontend Engineer",
+    company: "Veegel Technology Limited",
+    rating: 5,
+  },
+  {
+    quote:
+      "Samuel's work on Flexydemy was outstanding. He implemented crucial features like interactive video calling, secure payment gateways, and efficient document management, keeping the codebase extremely clean and modular.",
+    name: "Richard Promise",
+    role: "Senior Frontend Engineer",
+    company: "Flexydemy",
+    rating: 5,
+  },
+  {
+    quote:
+      "As a web development instructor, Samuel showed great patience and a natural ability to explain complex engineering concepts. He helped dozens of students successfully launch their programming careers.",
+    name: "Ayomide Olasupo",
+    role: "Academic Director",
+    company: "BAFUTO Institute",
+    rating: 5,
+  },
+];

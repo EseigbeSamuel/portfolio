@@ -61,25 +61,25 @@ export default function Hero() {
       {isMobile ? "" : <BackgroundBeams className="opacity-90 " />}
 
       <motion.section
-        className="text-center space-y-3 p-4"
+        className="text-center space-y-4 p-4 max-w-4xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.h1
-          className=" text-3xl lg:text-6xl lg:h-[70px] font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent"
+          className="text-3xl lg:text-6xl font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent pb-1"
           variants={itemVariants}
         >
           Samuel Eseigbe
         </motion.h1>
-        <motion.h1
-          className=" text-4xl lg:text-7xl font-bold "
+        <motion.h2
+          className="text-4xl lg:text-7xl font-bold tracking-tight text-white"
           variants={itemVariants}
         >
           Full-Stack Developer
-        </motion.h1>
-        <motion.h2
-          className="capitalize text-xl lg:text-3xl font-semibold"
+        </motion.h2>
+        <motion.h3
+          className="capitalize text-xl lg:text-3xl font-semibold text-gray-200"
           variants={itemVariants}
         >
           Building{" "}
@@ -87,10 +87,10 @@ export default function Hero() {
             Innovative solutions
           </span>{" "}
           across platforms
-        </motion.h2>
-        <motion.p className=" lg:text-xl font-mono" variants={itemVariants}>
-          Specializing in Next.js, React native, Expo, Svelte, Webflow, Node.js
-          and ASP.NET. Creating seamless experience from web to mobile
+        </motion.h3>
+        <motion.p className="text-base lg:text-xl text-gray-400 font-sans max-w-2xl mx-auto leading-relaxed" variants={itemVariants}>
+          Specializing in Next.js, React Native, Expo, Svelte, Webflow, Node.js,
+          and ASP.NET. Creating seamless experiences from web to mobile.
         </motion.p>
       </motion.section>
 

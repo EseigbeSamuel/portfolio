@@ -96,7 +96,7 @@ export default function About() {
           About Me
         </motion.h1>
         <motion.p
-          className="lg:text-xl text-gray-300 xl:px-[300px] font-mono"
+          className="text-base lg:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -143,7 +143,7 @@ export default function About() {
           <motion.div className="space-y-6" variants={FADE_LEFT}>
             <h2 className="font-semibold text-2xl">Education</h2>
             <motion.div
-              className="p-5 rounded-xl bg-brand-dark space-y-2"
+              className="p-5 rounded-xl bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_15px_rgba(223,35,38,0.05)] transition-all duration-300 space-y-2"
               variants={SCALE_UP}
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -155,7 +155,7 @@ export default function About() {
             </motion.div>
 
             <motion.div
-              className="p-5 rounded-xl bg-brand-dark space-y-2"
+              className="p-5 rounded-xl bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_15px_rgba(223,35,38,0.05)] transition-all duration-300 space-y-2"
               variants={SCALE_UP}
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -187,7 +187,7 @@ export default function About() {
               {edu.map((item, i) => (
                 <motion.div
                   key={i}
-                  className="flex flex-col items-center py-5 bg-brand-dark rounded-xl cursor-pointer"
+                  className="flex flex-col items-center py-5 bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_15px_rgba(223,35,38,0.05)] transition-all duration-300 rounded-xl cursor-pointer"
                   variants={STAT_CARD}
                   whileHover={{
                     scale: 1.05,
@@ -231,11 +231,10 @@ export default function About() {
           {Skills.map((skill, idx) => (
             <motion.div
               key={idx}
-              className="p-5 rounded-2xl bg-brand-dark shadow-xl space-y-4"
+              className="p-5 rounded-2xl bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_20px_rgba(223,35,38,0.08)] transition-all duration-300 space-y-4"
               variants={FADE_RIGHT}
               whileHover={{
                 scale: 1.03,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
                 transition: { duration: 0.3 },
               }}
               whileTap={{ scale: 0.98 }}
@@ -297,67 +296,60 @@ export default function About() {
         {Exp.map((exp, i) => (
           <motion.div
             key={i}
-            className="rounded-xl bg-brand-red p-[2px]"
+            className="rounded-xl bg-brand-dark border border-white/10 hover:border-brand-red/50 hover:shadow-[0_0_25px_rgba(223,35,38,0.12)] p-6 space-y-4 transition-all duration-300"
             variants={FADE_UP}
             whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3 },
+              y: -5,
+              transition: { duration: 0.2 },
             }}
           >
-            <motion.div
-              className="bg-brand-dark p-5 rounded-xl space-y-3"
+            <motion.header
+              className="flex flex-col sm:flex-row sm:justify-between gap-2"
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <div>
+                <h3 className="text-xl font-semibold capitalize text-white">
+                  {exp.title}
+                </h3>
+                <p className="text-brand-red font-medium capitalize">{exp.place}</p>
+              </div>
+              <span className="text-sm font-mono text-gray-400 capitalize">{exp.date}</span>
+            </motion.header>
+
+            <motion.p
+              className="text-gray-300 text-sm md:text-base leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.4 }}
             >
-              <motion.header
-                className="flex flex-col sm:flex-row sm:justify-between gap-2"
-                initial={{ x: -20, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                <div>
-                  <h3 className="text-xl font-semibold capitalize">
-                    {exp.title}
-                  </h3>
-                  <p className="text-brand-red capitalize">{exp.place}</p>
-                </div>
-                <span className="capitalize ">{exp.date}</span>
-              </motion.header>
+              {exp.desc}
+            </motion.p>
 
-              <motion.p
-                className="text-gray-300"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-              >
-                {exp.desc}
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                <h4 className="font-medium text-lg mb-1">Key Features</h4>
-                <ul className="list-disc list-inside text-gray-300 space-y-1">
-                  {exp.features.map((f, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.6 + idx * 0.1 }}
-                    >
-                      {f}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="space-y-2"
+            >
+              <h4 className="font-semibold text-white text-sm tracking-wider uppercase">Key Achievements & Responsibilities</h4>
+              <ul className="list-disc list-inside text-gray-300 space-y-1.5 text-sm md:text-base pl-1">
+                {exp.features.map((f, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 + idx * 0.1 }}
+                  >
+                    {f}
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
           </motion.div>
         ))}

@@ -4,7 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { useModal } from "@/contexts/ModalContext";
 import { projectData } from "@/data/data";
 import { motion } from "framer-motion";
-import ProjectDescription from "../components/ProjectDescription";
+import ProjectDescription from "@/components/ProjectDescription";
 import { StaticImageData } from "next/image";
 
 interface ProjectProps {
@@ -42,7 +42,7 @@ export default function Projects() {
         }}
       >
         <h1 className="font-bold text-3xl lg:text-5xl">Featured Projects</h1>
-        <p className="lg:text-xl text-center xl:px-[300px] font-mono ">
+        <p className="text-base lg:text-xl text-center text-gray-400 max-w-2xl mx-auto leading-relaxed">
           A showcase of my diverse development projects spanning web
           applications and mobile apps.
         </p>
