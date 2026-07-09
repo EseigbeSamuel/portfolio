@@ -13,7 +13,13 @@ export default function Navbar() {
 
   // IntersectionObserver to watch scroll sections
   useEffect(() => {
-    const sections = ["#home", "#project", "#about", "#testimonials", "#contact"];
+    const sections = [
+      "#home",
+      "#project",
+      "#about",
+      "#testimonials",
+      "#contact",
+    ];
     const observerOptions = {
       root: null,
       rootMargin: "-40% 0px -50% 0px", // Trigger when the section is in the middle viewport
@@ -31,7 +37,10 @@ export default function Navbar() {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
 
     sections.forEach((id) => {
       const element = document.querySelector(id);
@@ -93,9 +102,9 @@ export default function Navbar() {
       {/* MOBILE HEADER BAR */}
       <section className="fixed top-0 left-0 w-full flex md:hidden justify-between items-center px-6 py-4 bg-black/80 backdrop-blur-md border-b border-brand-orange/20 z-50">
         <div className="flex items-center gap-2.5">
-          <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-gradient-to-br from-brand-red to-brand-orange text-white font-bold text-sm shadow-md">
+          {/*<div className="flex items-center justify-center w-7 h-7 rounded-lg bg-gradient-to-br from-brand-red to-brand-orange text-white font-bold text-sm shadow-md">
             SE
-          </div>
+          </div>*/}
           <h1 className="text-lg font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
             Samuel Eseigbe
           </h1>
@@ -129,7 +138,9 @@ export default function Navbar() {
                     href={n.path}
                     onClick={() => setIsOpen(false)}
                     className={`text-3xl font-bold tracking-wider hover:text-brand-orange duration-300 font-heading relative py-2 block ${
-                      activeSection === n.path ? "text-brand-orange" : "text-white"
+                      activeSection === n.path
+                        ? "text-brand-orange"
+                        : "text-white"
                     }`}
                   >
                     {n.label}
@@ -173,7 +184,8 @@ export default function Navbar() {
                 </Link>
               </div>
               <p className="text-xs text-gray-500 font-mono">
-                &copy; {new Date().getFullYear()} Samuel Eseigbe. All rights reserved.
+                &copy; {new Date().getFullYear()} Samuel Eseigbe. All rights
+                reserved.
               </p>
             </motion.div>
           </motion.div>
@@ -183,9 +195,9 @@ export default function Navbar() {
       {/* DESKTOP NAVBAR */}
       <div className="hidden md:flex fixed left-0 top-0 px-8 xl:px-16 items-center justify-between w-full h-[70px] shadow-sm backdrop-blur bg-black/40 border-b border-brand-orange/10 z-50">
         <section className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-brand-red to-brand-orange text-white font-bold text-base shadow-md">
+          {/*<div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-brand-red to-brand-orange text-white font-bold text-base shadow-md">
             SE
-          </div>
+          </div>*/}
           <h1 className="text-xl font-bold bg-gradient-to-r from-brand-red to-brand-orange bg-clip-text text-transparent">
             Samuel Eseigbe
           </h1>
@@ -206,7 +218,7 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-        
+
         <section>
           <div className="flex space-x-4">
             <Link
