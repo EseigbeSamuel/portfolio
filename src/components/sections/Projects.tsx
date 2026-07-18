@@ -71,6 +71,7 @@ export default function Projects() {
             }}
           >
             <ProjectCard
+              priority={i < 2}
               onClick={() =>
                 openModal(
                   <ProjectDescription

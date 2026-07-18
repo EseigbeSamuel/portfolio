@@ -7,6 +7,7 @@ import xp from "@/assets/images/xp.png";
 import esma from "@/assets/images/esma.png";
 import vegeel from "@/assets/images/vegeel.png";
 import elsoftPM from "@/assets/images/PM.png";
+import openCanvas from "@/assets/images/opencanvas.png";
 
 export const navitems = [
   { path: "#home", label: "Home" },
@@ -31,6 +32,27 @@ export const projectData: projectProps[] = [
   //   desc: "Description here",
   //   tech: ["next.js", "Tailwind CSS", "framer motion"],
   // },
+  //
+  {
+    image: openCanvas,
+    title: "Open Canvas Partners",
+    desc: "A secure investor portal built for Open Canvas Partners, a US-based private equity firm. The platform enables investors to explore investment opportunities, review deals and funds, securely access investment documents, manage their profiles, and communicate with administrators. It includes authentication, role-based access control, document management, investor onboarding workflows, and an administrative dashboard for managing investors, funds, and investment opportunities.",
+    tech: [
+      "next.js",
+      "typescript",
+      "tailwind CSS",
+      "supabase",
+      "postgresql",
+      "drizzle ORM",
+      "tanstack query",
+      "tanstack table",
+      "zustand",
+      "shadcn/ui",
+      "react hook form",
+      "zod",
+    ],
+    link: "https://opencanvas-brown.vercel.app",
+  },
   {
     image: elsoftPM,
     title: "ElsoftPM",
@@ -52,7 +74,7 @@ export const projectData: projectProps[] = [
     title: "Flexydemy",
     desc: "Flexydemy is an educational platform that seamlessly connects tutors and students for online learning. The platform features integrated video calling for live lectures, secure payment processing, and robust file management allowing users to upload and download course materials and documents. Flexydemy provides a complete virtual classroom experience, enabling efficient knowledge transfer between educators and learners in a unified environment.",
     tech: ["angular", "tailwind CSS", "rxjs", "recharts", "websocket"],
-    link: "http://dev.flexydemy.com/",
+    link: "http://dev.flexydemy.com",
   },
   {
     image: esma,
@@ -74,13 +96,14 @@ export const projectData: projectProps[] = [
     title: "XP Requiter",
     desc: "XP Requiter is a comprehensive healthcare ecosystem platform that connects patients, doctors, hospitals, and investors in a unified network. The platform facilitates telemedicine consultations, secure payment processing, medical document management, and healthcare investment opportunities. XP Requiter creates a complete digital health infrastructure that streamlines patient care delivery while enabling strategic financial partnerships in the medical sector.",
     tech: ["react", "framer motion", "tailwind CSS", "axois", "redux"],
+    link: "https://xprecruiter.com",
   },
   {
     image: vegeel,
     title: "Vegeel",
     desc: "Vegeel is a comprehensive cybersecurity compliance platform that helps organizations manage and monitor their security posture. The application streamlines compliance workflows, automates security assessments, and provides real-time insights into regulatory requirements. Vegeel enables businesses to maintain adherence to industry standards while reducing compliance overhead through intelligent automation and centralized security management.",
     tech: ["react", "tailwind CSS", "axois", "redux", "framer motion"],
-    link: "https://www.vegeel.com/",
+    link: "https://www.vegeel.com",
   },
 ];
 
@@ -97,7 +120,7 @@ export const techStack: techProps[] = [
   },
   { image: "https://cdn.simpleicons.org/webflow", title: "Webflow" },
   { image: "https://skillicons.dev/icons?i=nextjs", title: "Next.js" },
-  { image: "https://skillicons.dev/icons?i=svelte", title: "Svelte" },
+  { image: "https://skillicons.dev/icons?i=angular", title: "Angular" },
   { image: "https://skillicons.dev/icons?i=nodejs", title: "Node.js" },
   { image: "https://skillicons.dev/icons?i=express", title: "Express" },
   { image: "https://skillicons.dev/icons?i=supabase", title: "Supabase" },
@@ -140,7 +163,6 @@ export const Skills: skillsProps[] = [
       "TypeScript",
       "Next.js",
       "angular",
-      "Svelte",
     ],
   },
   {
@@ -150,7 +172,6 @@ export const Skills: skillsProps[] = [
     tech: [
       "Node.js",
       "Express.js",
-      "nest.js",
       "C#",
       ".NET",
       "ASP.NET",

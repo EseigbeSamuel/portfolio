@@ -145,6 +145,7 @@
   display: flex;
   width: max-content;
   animation: marquee var(--marquee-duration, 35s) linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee:hover {

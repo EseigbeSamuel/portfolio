@@ -3,7 +3,6 @@ import Button from "@/components/Button";
 import TechStack from "@/components/TechStack";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { techStack } from "@/data/data";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -28,15 +27,6 @@ const techStackVariants = {
 };
 
 export default function Hero() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const screensize = () => setIsMobile(window.innerWidth < 765);
-    screensize();
-    window.addEventListener("resize", screensize);
-    return () => window.removeEventListener("resize", screensize);
-  }, []);
-
   const handleDownloadResume = () => {
     const link = document.createElement("a");
     link.href = "/Samuel-Osezele-Eseigbe-Resume.pdf";
@@ -58,7 +48,7 @@ export default function Hero() {
       id="home"
       className=" min-h-[calc(100dvh-100px)] w-full max-w-[1440px] flex flex-col items-center justify-center gap-10"
     >
-      {isMobile ? "" : <BackgroundBeams className="opacity-90 " />}
+      <BackgroundBeams className="hidden md:block opacity-90" />
 
       <motion.section
         className="text-center space-y-4 p-4 max-w-4xl mx-auto"
