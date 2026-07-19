@@ -187,21 +187,21 @@ export const Skills: skillsProps[] = [
     color: "from-purple-500 to-pink-500",
     tech: ["React Native", "Mobile UI/UX", "Push Notifications"],
   },
-  {
-    title: "DevOps & Tools",
-    icon: <FaCloud />, // or whichever cloud icon you prefer
-    color: "from-indigo-500 to-purple-500",
-    tech: [
-      "Docker",
-      "Git",
-      "CI/CD",
-      "AWS",
-      "Vercel",
-      "Cloudflare Workers",
-      "Linux",
-      "Shell Scripting",
-    ],
-  },
+  // {
+  //   title: "DevOps & Tools",
+  //   icon: <FaCloud />, // or whichever cloud icon you prefer
+  //   color: "from-indigo-500 to-purple-500",
+  //   tech: [
+  //     "Docker",
+  //     "Git",
+  //     "CI/CD",
+  //     "AWS",
+  //     "Vercel",
+  //     "Cloudflare Workers",
+  //     "Linux",
+  //     "Shell Scripting",
+  //   ],
+  // },
 ];
 
 interface expProps {

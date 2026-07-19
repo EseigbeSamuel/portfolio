@@ -134,8 +134,7 @@ export default function About() {
             >
               I follow a modular approach, ensuring codebases remain scalable
               and easy for future contributors. My experience includes
-              full-stack web development, mobile development, and DevOps tools
-              like Docker and Kubernetes.
+              full-stack web development and mobile development
             </motion.p>
           </motion.div>
 
@@ -314,9 +313,13 @@ export default function About() {
                 <h3 className="text-xl font-semibold capitalize text-white">
                   {exp.title}
                 </h3>
-                <p className="text-brand-red font-medium capitalize">{exp.place}</p>
+                <p className="text-brand-red font-medium capitalize">
+                  {exp.place}
+                </p>
               </div>
-              <span className="text-sm font-mono text-gray-400 capitalize">{exp.date}</span>
+              <span className="text-sm font-mono text-gray-400 capitalize">
+                {exp.date}
+              </span>
             </motion.header>
 
             <motion.p
@@ -336,7 +339,9 @@ export default function About() {
               transition={{ delay: 0.5 }}
               className="space-y-2"
             >
-              <h4 className="font-semibold text-white text-sm tracking-wider uppercase">Key Achievements & Responsibilities</h4>
+              <h4 className="font-semibold text-white text-sm tracking-wider uppercase">
+                Key Achievements & Responsibilities
+              </h4>
               <ul className="list-disc list-inside text-gray-300 space-y-1.5 text-sm md:text-base pl-1">
                 {exp.features.map((f, idx) => (
                   <motion.li
