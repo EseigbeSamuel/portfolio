@@ -121,29 +121,47 @@ export default function Contact() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://formsubmit.co/ajax/eseigbesamuel810@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `[Portfolio Inquiry] ${formData.subject}`,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
 
-      const data = await res.json();
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        console.error("FormSubmit non-JSON response:", text);
+        setStatus("error");
+        setErrorMessage(
+          "Service is temporarily protecting the endpoint. Please check your inbox for an activation email if this is your first time, or email directly."
+        );
+        return;
+      }
 
-      if (res.ok && data.success) {
+      if (res.ok && (data.success === "true" || data.success === true)) {
         setStatus("success");
         setSentSummary({
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          mailtoUrl: data.mailtoUrl,
         });
         setFormData({ name: "", email: "", subject: PROJECT_TYPES[0], message: "" });
         setTouched({});
         setErrors({});
       } else {
         setStatus("error");
-        setErrorMessage(data.error || "Failed to send message. Please try again.");
+        setErrorMessage(data.message || data.error || "Failed to send message. Please try again.");
       }
     } catch (err) {
       console.error(err);
