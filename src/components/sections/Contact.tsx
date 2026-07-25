@@ -1,5 +1,6 @@
 "use client";
-import { Locate, Mail, Send, CheckCircle2 } from "lucide-react";
+
+import { Locate, Mail, Send, CheckCircle2, AlertCircle, Copy, Check, ExternalLink, RefreshCw, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
@@ -31,20 +32,136 @@ const iconVariants: Variants = {
   },
 };
 
-export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+const PROJECT_TYPES = [
+  "Full-stack development",
+  "Web application project",
+  "Mobile app development",
+  "Consultation / Other",
+];
 
-  const handleSubmit = (e: React.FormEvent) => {
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: PROJECT_TYPES[0],
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [sentSummary, setSentSummary] = useState<{
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    mailtoUrl?: string;
+  } | null>(null);
+
+  const validateField = (field: string, value: string) => {
+    let err = "";
+    if (field === "name") {
+      if (!value.trim()) err = "Name is required";
+      else if (value.trim().length < 2) err = "Name must be at least 2 characters";
+    }
+    if (field === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!value.trim()) err = "Email address is required";
+      else if (!emailRegex.test(value.trim())) err = "Please enter a valid email address";
+    }
+    if (field === "message") {
+      if (!value.trim()) err = "Message is required";
+      else if (value.trim().length < 10) err = "Message must be at least 10 characters";
+    }
+    return err;
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    const value = formData[field as keyof typeof formData] || "";
+    const err = validateField(field, value);
+    setErrors((prev) => ({ ...prev, [field]: err }));
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (touched[field]) {
+      const err = validateField(field, value);
+      setErrors((prev) => ({ ...prev, [field]: err }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: FormErrors = {
+      name: validateField("name", formData.name),
+      email: validateField("email", formData.email),
+      message: validateField("message", formData.message),
+    };
+
+    setErrors(newErrors);
+    setTouched({ name: true, email: true, subject: true, message: true });
+
+    return !Object.values(newErrors).some((err) => err);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (!validateForm()) return;
 
     setStatus("submitting");
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
-    }, 1500);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setStatus("success");
+        setSentSummary({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          mailtoUrl: data.mailtoUrl,
+        });
+        setFormData({ name: "", email: "", subject: PROJECT_TYPES[0], message: "" });
+        setTouched({});
+        setErrors({});
+      } else {
+        setStatus("error");
+        setErrorMessage(data.error || "Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setErrorMessage("Network error occurred. Please check your connection or contact directly via email.");
+    }
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("eseigbesamuel810@gmail.com");
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2500);
+  };
+
+  const resetForm = () => {
+    setStatus("idle");
+    setErrorMessage("");
+    setSentSummary(null);
   };
 
   return (
@@ -66,8 +183,7 @@ export default function Contact() {
           variants={itemVariants}
         >
           I'm always interested in new opportunities and exciting projects.
-          Whether you have a question or just want to say hi, feel free to reach
-          out!
+          Whether you have a question or just want to say hi, feel free to reach out!
         </motion.p>
       </motion.section>
 
@@ -87,35 +203,54 @@ export default function Contact() {
 
             <div className="space-y-4">
               <motion.div
-                className="flex items-center gap-4"
+                className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-orange/30 transition-all duration-300 group"
                 variants={itemVariants}
               >
                 <a
                   href="mailto:eseigbesamuel810@gmail.com?subject=Portfolio Inquiry"
-                  className="flex items-center gap-4 group cursor-pointer"
+                  className="flex items-center gap-4 flex-1 min-w-0"
                 >
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-brand-orange group-hover:bg-brand-orange/10 group-hover:border-brand-orange/30 transition-all duration-300">
+                  <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-brand-orange group-hover:bg-brand-orange/10 group-hover:border-brand-orange/30 transition-all duration-300">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-400">Email</h4>
-                    <p className="text-white group-hover:text-brand-orange transition-colors">
+                  <div className="truncate">
+                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Email</h4>
+                    <p className="text-white group-hover:text-brand-orange transition-colors truncate font-medium text-sm md:text-base">
                       eseigbesamuel810@gmail.com
                     </p>
                   </div>
                 </a>
+
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  title="Copy email to clipboard"
+                  className="ml-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all shrink-0 flex items-center gap-1.5 text-xs"
+                >
+                  {copiedEmail ? (
+                    <>
+                      <Check className="w-4 h-4 text-emerald-400" />
+                      <span className="text-emerald-400 font-semibold hidden sm:inline">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      <span className="hidden sm:inline">Copy</span>
+                    </>
+                  )}
+                </button>
               </motion.div>
 
               <motion.div
-                className="flex items-center gap-4"
+                className="flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10"
                 variants={itemVariants}
               >
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-brand-red">
+                <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-brand-red">
                   <Locate className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-400">Location</h4>
-                  <p className="text-white">Lagos, Nigeria</p>
+                  <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Location</h4>
+                  <p className="text-white font-medium text-sm md:text-base">Lagos, Nigeria</p>
                 </div>
               </motion.div>
             </div>
@@ -123,21 +258,21 @@ export default function Contact() {
 
           {/* WHAT I'M LOOKING FOR */}
           <motion.div
-            className="rounded-2xl bg-brand-dark border border-white/5 p-6 space-y-4"
+            className="rounded-2xl bg-brand-dark border border-white/5 p-6 space-y-4 shadow-lg"
             variants={itemVariants}
           >
             <h3 className="font-bold text-xl text-white">What I'm Looking For</h3>
             <ul className="space-y-2.5 text-gray-300 text-sm md:text-base">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+              <li className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-brand-red shrink-0"></span>
                 Full-stack development opportunities
               </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+              <li className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-brand-orange shrink-0"></span>
                 Web app development projects
               </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+              <li className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-brand-red shrink-0"></span>
                 Mobile app development projects
               </li>
             </ul>
@@ -160,7 +295,8 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/samuel-eseigbe-ba6891333/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-brand-red/10 hover:border-brand-red/30 transition-all duration-300"
+                  aria-label="LinkedIn Profile"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-brand-red/10 hover:border-brand-red/30 transition-all duration-300"
                 >
                   <FaLinkedin className="w-5 h-5" />
                 </Link>
@@ -171,7 +307,8 @@ export default function Contact() {
                   href="https://x.com/osezelle"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-brand-red/10 hover:border-brand-red/30 transition-all duration-300"
+                  aria-label="Twitter Profile"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-brand-red/10 hover:border-brand-red/30 transition-all duration-300"
                 >
                   <FaTwitter className="w-5 h-5" />
                 </Link>
@@ -182,7 +319,8 @@ export default function Contact() {
                   href="https://github.com/EseigbeSamuel"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-brand-red/10 hover:border-brand-red/30 transition-all duration-300"
+                  aria-label="GitHub Profile"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-brand-red/10 hover:border-brand-red/30 transition-all duration-300"
                 >
                   <FaGithub className="w-5 h-5" />
                 </Link>
@@ -200,30 +338,91 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <div className="rounded-2xl bg-brand-dark border border-white/5 shadow-2xl p-6 lg:p-8 relative overflow-hidden h-full flex flex-col justify-center">
-            {status === "success" ? (
+            {status === "success" && sentSummary ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center text-center space-y-4 py-12"
+                className="flex flex-col items-center text-center space-y-6 py-6"
               >
-                <CheckCircle2 className="w-16 h-16 text-emerald-500 animate-bounce" />
-                <h3 className="text-2xl font-bold text-white">Message Sent!</h3>
-                <p className="text-gray-400 max-w-sm">
-                  Thank you for reaching out. I'll review your inquiry and get back to you shortly.
-                </p>
+                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <CheckCircle2 className="w-10 h-10 animate-pulse" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold text-white">Message Sent Successfully!</h3>
+                  <p className="text-gray-400 max-w-md mx-auto text-sm md:text-base">
+                    Thank you, <span className="text-white font-medium">{sentSummary.name}</span>. Your message regarding{" "}
+                    <span className="text-brand-orange font-medium">{sentSummary.subject}</span> has been received. I will reply to{" "}
+                    <span className="text-white font-medium">{sentSummary.email}</span> within 24 hours.
+                  </p>
+                </div>
+
+                <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-left space-y-2 text-xs md:text-sm text-gray-300">
+                  <div className="font-semibold text-gray-400 text-xs uppercase tracking-wider">Summary of Inquiry:</div>
+                  <div className="line-clamp-3 italic text-gray-200">"{sentSummary.message}"</div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 w-full pt-2">
+                  <button
+                    type="button"
+                    onClick={resetForm}
+                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition-all text-sm"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    Send Another Message
+                  </button>
+
+                  {sentSummary.mailtoUrl && (
+                    <a
+                      href={sentSummary.mailtoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-orange hover:bg-brand-red text-white font-medium transition-all text-sm"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Open in Email App
+                    </a>
+                  )}
+                </div>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 <div className="space-y-1">
                   <h3 className="font-bold text-2xl text-white">Send a Message</h3>
-                  <p className="text-sm text-gray-400">I will reply within 24 business hours.</p>
+                  <p className="text-sm text-gray-400">Fill out the form below or reach out directly.</p>
                 </div>
+
+                {status === "error" && errorMessage && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm flex items-start gap-3"
+                  >
+                    <AlertCircle className="w-5 h-5 shrink-0 text-red-400 mt-0.5" />
+                    <div className="flex-1">
+                      <p className="font-medium text-red-200">{errorMessage}</p>
+                      <p className="text-xs text-red-300/80 mt-1">
+                        You can also send your message directly via email to{" "}
+                        <a
+                          href={`mailto:eseigbesamuel810@gmail.com?subject=${encodeURIComponent(
+                            formData.subject
+                          )}&body=${encodeURIComponent(formData.message)}`}
+                          className="underline hover:text-white font-semibold"
+                        >
+                          eseigbesamuel810@gmail.com
+                        </a>
+                        .
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
 
                 <div className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
+                    {/* NAME FIELD */}
                     <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                        Your Name
+                      <label htmlFor="name" className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex justify-between">
+                        <span>Your Name</span>
+                        <span className="text-brand-red">*</span>
                       </label>
                       <input
                         type="text"
@@ -231,13 +430,27 @@ export default function Contact() {
                         required
                         placeholder="John Doe"
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all text-sm"
+                        onBlur={() => handleBlur("name")}
+                        onChange={(e) => handleChange("name", e.target.value)}
+                        className={`w-full bg-black/40 border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none transition-all text-sm ${
+                          errors.name && touched.name
+                            ? "border-red-500/80 focus:ring-1 focus:ring-red-500"
+                            : "border-white/10 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
+                        }`}
                       />
+                      {errors.name && touched.name && (
+                        <p className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3 h-3 shrink-0" />
+                          {errors.name}
+                        </p>
+                      )}
                     </div>
+
+                    {/* EMAIL FIELD */}
                     <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                        Your Email
+                      <label htmlFor="email" className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex justify-between">
+                        <span>Your Email</span>
+                        <span className="text-brand-red">*</span>
                       </label>
                       <input
                         type="email"
@@ -245,35 +458,90 @@ export default function Contact() {
                         required
                         placeholder="john@example.com"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all text-sm"
+                        onBlur={() => handleBlur("email")}
+                        onChange={(e) => handleChange("email", e.target.value)}
+                        className={`w-full bg-black/40 border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none transition-all text-sm ${
+                          errors.email && touched.email
+                            ? "border-red-500/80 focus:ring-1 focus:ring-red-500"
+                            : "border-white/10 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
+                        }`}
                       />
+                      {errors.email && touched.email && (
+                        <p className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3 h-3 shrink-0" />
+                          {errors.email}
+                        </p>
+                      )}
                     </div>
                   </div>
 
+                  {/* SUBJECT / PROJECT TYPE */}
                   <div className="space-y-1.5">
-                    <label htmlFor="message" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                      Message
+                    <label htmlFor="subject" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                      Project Type / Subject
                     </label>
+                    <select
+                      id="subject"
+                      value={formData.subject}
+                      onChange={(e) => handleChange("subject", e.target.value)}
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all text-sm appearance-none cursor-pointer"
+                    >
+                      {PROJECT_TYPES.map((type) => (
+                        <option key={type} value={type} className="bg-brand-dark text-white">
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* MESSAGE FIELD */}
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between items-center text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                      <label htmlFor="message" className="flex gap-1">
+                        <span>Message</span>
+                        <span className="text-brand-red">*</span>
+                      </label>
+                      <span className={`${formData.message.length > 1000 ? "text-red-400" : "text-gray-500"}`}>
+                        {formData.message.length} / 1000
+                      </span>
+                    </div>
                     <textarea
                       id="message"
                       required
                       rows={5}
-                      placeholder="Tell me about your project..."
+                      maxLength={1000}
+                      placeholder="Tell me about your project, goals, timeline, or any questions..."
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all text-sm resize-none"
+                      onBlur={() => handleBlur("message")}
+                      onChange={(e) => handleChange("message", e.target.value)}
+                      className={`w-full bg-black/40 border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none transition-all text-sm resize-none ${
+                        errors.message && touched.message
+                          ? "border-red-500/80 focus:ring-1 focus:ring-red-500"
+                          : "border-white/10 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
+                      }`}
                     />
+                    {errors.message && touched.message && (
+                      <p className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                        <AlertCircle className="w-3 h-3 shrink-0" />
+                        {errors.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 <div className="pt-2">
                   <Button
                     type="submit"
-                    label={status === "submitting" ? "Sending..." : "Send Message"}
+                    label={status === "submitting" ? "Sending Message..." : "Send Message"}
                     fullWidth={true}
                     disabled={status === "submitting"}
-                    icon={<Send className="w-4 h-4" />}
+                    icon={
+                      status === "submitting" ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )
+                    }
                   />
                 </div>
               </form>
