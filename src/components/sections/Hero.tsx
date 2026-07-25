@@ -78,9 +78,12 @@ export default function Hero() {
           </span>{" "}
           across platforms
         </motion.h3>
-        <motion.p className="text-base lg:text-xl text-gray-400 font-sans max-w-2xl mx-auto leading-relaxed" variants={itemVariants}>
-          Specializing in Next.js, React Native, Expo, Svelte, Webflow, Node.js,
-          and ASP.NET. Creating seamless experiences from web to mobile.
+        <motion.p
+          className="text-base lg:text-xl text-gray-400 font-sans max-w-2xl mx-auto leading-relaxed"
+          variants={itemVariants}
+        >
+          Specializing in Next.js, React Native, Expo, Webflow, Node.js, and
+          ASP.NET. Creating seamless experiences from web to mobile.
         </motion.p>
       </motion.section>
 

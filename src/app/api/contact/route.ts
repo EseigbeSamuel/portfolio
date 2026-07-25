@@ -100,8 +100,8 @@ export async function POST(req: Request) {
 
     // 3. Free Email Service Fallback via FormSubmit (No API keys required)
     // The very first submission will trigger an Activation Email to eseigbesamuel810@gmail.com
-    const origin = req.headers.get("origin") || "http://localhost:3000";
-    const referer = req.headers.get("referer") || "http://localhost:3000/";
+    const origin = req.headers.get("origin") || "https://samueleseigbe.vercel.app/";
+    const referer = req.headers.get("referer") || "https://samueleseigbe.vercel.app/";
 
     const formSubmitResponse = await fetch("https://formsubmit.co/ajax/eseigbesamuel810@gmail.com", {
       method: "POST",
