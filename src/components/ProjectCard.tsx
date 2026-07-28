@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import Button from "./Button";
 import { ExternalLink } from "lucide-react";
+import SpotlightCard from "./SpotlightCard";
 
 interface Props {
   image: StaticImageData;
@@ -32,10 +33,10 @@ export default function ProjectCard({
   };
 
   return (
-    <div
-      className="group rounded-xl border border-white/5 bg-brand-dark hover:border-brand-red/40 hover:shadow-[0_0_30px_rgba(223,35,38,0.1)] transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full overflow-hidden"
-      onClick={onClick}
+    <SpotlightCard
+      className="group transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full"
     >
+      <div onClick={onClick} className="flex flex-col h-full w-full">
       <div className="relative w-full h-48 overflow-hidden bg-zinc-950 border-b border-white/5">
         <Image
           src={image}
@@ -104,6 +105,7 @@ export default function ProjectCard({
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </SpotlightCard>
   );
 }

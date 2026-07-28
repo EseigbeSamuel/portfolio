@@ -4,67 +4,21 @@ import Button from "@/components/Button";
 import { edu, Exp, Skills } from "@/data/data";
 import { Download } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import SpotlightCard from "@/components/SpotlightCard";
 
 const CONTAINER: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
 const FADE_UP: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
-  },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const FADE_LEFT: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-  },
-};
-
-const FADE_RIGHT: Variants = {
-  hidden: { opacity: 0, x: 30 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-  },
-};
-
-const SCALE_UP: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-  },
-};
-
-const STAT_CARD: Variants = {
-  hidden: { opacity: 0, scale: 0.8, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 12,
-    },
-  },
-};
 const handleDownloadResume = () => {
   const link = document.createElement("a");
   link.href = "/Samuel-Osezele-Eseigbe-Resume.pdf";
@@ -78,286 +32,135 @@ export default function About() {
   return (
     <motion.div
       id="about"
-      className="space-y-12 max-w-[1440px] px-4 md:px-6 lg:px-8 py-[50px]"
+      className="space-y-16 max-w-[1440px] px-4 md:px-6 lg:px-8 py-[60px] w-full"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-10%" }}
       variants={CONTAINER}
     >
-      {/* HEADER */}
       <motion.div className="text-center space-y-4" variants={FADE_UP}>
-        <motion.h1
-          className="text-3xl lg:text-5xl font-bold"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-        >
-          About Me
+        <motion.h1 className="text-4xl lg:text-6xl font-bold font-heading">
+          Behind the Code
         </motion.h1>
-        <motion.p
-          className="text-base lg:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <motion.p className="text-base lg:text-xl text-gray-400 max-w-2xl mx-auto">
           A passionate software engineer specializing in full-stack development,
           mobile applications, and automation solutions.
         </motion.p>
       </motion.div>
 
-      <div className="grid lg:grid-cols-2 gap-10">
-        <motion.div
-          className="space-y-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-10%" }}
-          variants={CONTAINER}
-        >
-          {/* WHO I AM */}
-          <motion.div className="space-y-5" variants={FADE_LEFT}>
-            <h2 className="font-semibold text-2xl">Who I Am</h2>
-            <motion.p
-              className="text-gray-300 leading-relaxed"
-              variants={FADE_UP}
-            >
-              I'm a software engineer who prioritizes maintainable, scalable
-              systems and clean code principles. I focus on building
-              user-centered applications that solve real-world problems while
-              ensuring long-term code stability.
-            </motion.p>
-
-            <motion.p
-              className="text-gray-300 leading-relaxed"
-              variants={FADE_UP}
-            >
-              I follow a modular approach, ensuring codebases remain scalable
-              and easy for future contributors. My experience includes
-              full-stack web development and mobile development
-            </motion.p>
-          </motion.div>
-
-          {/* EDUCATION */}
-          <motion.div className="space-y-6" variants={FADE_LEFT}>
-            <h2 className="font-semibold text-2xl">Education</h2>
-            <motion.div
-              className="p-5 rounded-xl bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_15px_rgba(223,35,38,0.05)] transition-all duration-300 space-y-2"
-              variants={SCALE_UP}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <h3 className="font-semibold text-xl">Software Development</h3>
-              <p className="text-brand-red text-lg capitalize">
-                BAFUTO Institute of Information and Technology, Lagos, Nigeria
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="p-5 rounded-xl bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_15px_rgba(223,35,38,0.05)] transition-all duration-300 space-y-2"
-              variants={SCALE_UP}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <h3 className="font-semibold text-xl">
-                Bachelor of Arts (B.A.) in English Language
-              </h3>
-              <p className="text-brand-red text-lg capitalize">
-                Lagos State University, Lagos, Nigeria
-              </p>
-              <p className="flex items-center gap-2">
-                CGPA:
-                <span className="text-brand-red text-xl font-semibold">
-                  4.40/5
-                </span>
-              </p>
-            </motion.div>
-
-            <motion.div className="flex justify-center" variants={FADE_UP}>
-              <Button
-                label="Download Resume"
-                iconPosition="left"
-                icon={<Download />}
-                onClick={handleDownloadResume}
-              />
-            </motion.div>
-
-            <motion.div className="grid grid-cols-2 gap-5" variants={CONTAINER}>
-              {edu.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="flex flex-col items-center py-5 bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_15px_rgba(223,35,38,0.05)] transition-all duration-300 rounded-xl cursor-pointer"
-                  variants={STAT_CARD}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.h3
-                    className="text-brand-red font-bold text-2xl"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      delay: 0.2 + i * 0.1,
-                    }}
-                  >
-                    {item.number}+
-                  </motion.h3>
-                  <p className="capitalize text-lg">{item.label}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* SKILLS */}
-        <motion.div
-          className="space-y-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-10%" }}
-          variants={CONTAINER}
-        >
-          <motion.h2 className="font-semibold text-2xl" variants={FADE_RIGHT}>
-            Skills & Expertise
-          </motion.h2>
-
-          {Skills.map((skill, idx) => (
-            <motion.div
-              key={idx}
-              className="p-5 rounded-2xl bg-brand-dark border border-white/5 hover:border-brand-red/30 hover:shadow-[0_0_20px_rgba(223,35,38,0.08)] transition-all duration-300 space-y-4"
-              variants={FADE_RIGHT}
-              whileHover={{
-                scale: 1.03,
-                transition: { duration: 0.3 },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="flex items-center gap-4">
-                <motion.div
-                  className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-r ${skill.color}`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {skill.icon}
-                </motion.div>
-                <h3 className="text-2xl font-semibold">{skill.title}</h3>
-              </div>
-
-              <motion.div className="flex flex-wrap gap-3" variants={CONTAINER}>
-                {skill.tech.map((tech, i) => (
-                  <motion.span
-                    key={i}
-                    className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm capitalize"
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: i * 0.05,
-                      type: "spring",
-                      stiffness: 200,
-                    }}
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "#374151",
-                      transition: { duration: 0.2 },
-                    }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* EXPERIENCE */}
-      <motion.div
-        className="space-y-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-10%" }}
+      {/* BENTO GRID */}
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[minmax(180px,auto)]"
         variants={CONTAINER}
       >
-        <motion.h2
-          className="text-2xl font-semibold text-center"
-          variants={FADE_UP}
-        >
-          Experience
+        {/* WHO I AM */}
+        <motion.div variants={FADE_UP} className="md:col-span-2 lg:col-span-2 h-full">
+          <SpotlightCard className="p-8 h-full flex flex-col justify-center">
+            <h2 className="font-semibold text-2xl mb-4 font-heading text-white">The Philosophy</h2>
+            <p className="text-gray-400 leading-relaxed text-sm md:text-base">
+              I'm a software engineer who prioritizes maintainable, scalable systems and clean code principles. I focus on building user-centered applications that solve real-world problems while ensuring long-term code stability.
+            </p>
+          </SpotlightCard>
+        </motion.div>
+
+        {/* STATS / NUMBERS */}
+        <motion.div variants={FADE_UP} className="md:col-span-1 lg:col-span-1 grid gap-6">
+          {edu.map((item, i) => (
+            <SpotlightCard key={i} className="p-6 flex flex-col items-center justify-center text-center">
+              <h3 className="text-brand-orange font-bold text-4xl font-mono mb-2">{item.number}+</h3>
+              <p className="text-gray-300 text-sm uppercase tracking-widest">{item.label}</p>
+            </SpotlightCard>
+          ))}
+        </motion.div>
+
+        {/* SKILLS HIGHLIGHT */}
+        <motion.div variants={FADE_UP} className="md:col-span-3 lg:col-span-1 h-full">
+          <SpotlightCard className="p-8 h-full">
+            <h2 className="font-semibold text-xl mb-6 text-white font-heading">Core Stack</h2>
+            <div className="flex flex-wrap gap-2">
+              {Skills.flatMap(s => s.tech).slice(0, 12).map((tech, i) => (
+                <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 rounded-lg text-xs hover:bg-brand-red/20 hover:border-brand-red/50 transition-colors">
+                  {tech}
+                </span>
+              ))}
+              <span className="px-3 py-1.5 text-brand-orange text-xs font-semibold">And more...</span>
+            </div>
+          </SpotlightCard>
+        </motion.div>
+
+        {/* EDUCATION */}
+        <motion.div variants={FADE_UP} className="md:col-span-3 lg:col-span-2 h-full">
+          <SpotlightCard className="p-8 h-full flex flex-col justify-between">
+            <div>
+              <h2 className="font-semibold text-2xl mb-6 text-white font-heading">Education</h2>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-200">Software Development</h3>
+                  <p className="text-brand-red text-sm mt-1">BAFUTO Institute of Information and Technology</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-200">B.A. English Language</h3>
+                  <p className="text-brand-red text-sm mt-1">Lagos State University (CGPA: 4.40/5)</p>
+                </div>
+              </div>
+            </div>
+          </SpotlightCard>
+        </motion.div>
+
+        {/* RESUME CTA */}
+        <motion.div variants={FADE_UP} className="md:col-span-3 lg:col-span-2 h-full">
+          <SpotlightCard className="p-8 h-full flex flex-col items-center justify-center text-center bg-gradient-to-br from-brand-dark to-brand-red/10">
+            <h2 className="font-semibold text-2xl mb-4 text-white font-heading">Want the full story?</h2>
+            <p className="text-gray-400 mb-6 text-sm">Download my comprehensive resume to see all my experience, skills, and educational background.</p>
+            <Button
+              label="Download Resume"
+              iconPosition="left"
+              icon={<Download className="w-4 h-4" />}
+              onClick={handleDownloadResume}
+            />
+          </SpotlightCard>
+        </motion.div>
+      </motion.div>
+
+      {/* EXPERIENCE LIST */}
+      <motion.div className="space-y-8 pt-10" variants={CONTAINER}>
+        <motion.h2 className="text-3xl font-bold font-heading text-center" variants={FADE_UP}>
+          Professional Experience
         </motion.h2>
 
-        {Exp.map((exp, i) => (
-          <motion.div
-            key={i}
-            className="rounded-xl bg-brand-dark border border-white/10 hover:border-brand-red/50 hover:shadow-[0_0_25px_rgba(223,35,38,0.12)] p-6 space-y-4 transition-all duration-300"
-            variants={FADE_UP}
-            whileHover={{
-              y: -5,
-              transition: { duration: 0.2 },
-            }}
-          >
-            <motion.header
-              className="flex flex-col sm:flex-row sm:justify-between gap-2"
-              initial={{ x: -20, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <div>
-                <h3 className="text-xl font-semibold capitalize text-white">
-                  {exp.title}
-                </h3>
-                <p className="text-brand-red font-medium capitalize">
-                  {exp.place}
+        <div className="grid gap-6">
+          {Exp.map((exp, i) => (
+            <motion.div key={i} variants={FADE_UP}>
+              <SpotlightCard className="p-5 md:p-8">
+                <header className="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-4 mb-5 md:mb-6">
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-semibold capitalize text-white">{exp.title}</h3>
+                    <p className="text-brand-orange text-sm md:text-base font-medium mt-1">{exp.place}</p>
+                  </div>
+                  <span className="text-xs md:text-sm font-mono text-gray-500 py-1 px-3 bg-white/5 rounded-full self-start border border-white/10">
+                    {exp.date}
+                  </span>
+                </header>
+
+                <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+                  {exp.desc}
                 </p>
-              </div>
-              <span className="text-sm font-mono text-gray-400 capitalize">
-                {exp.date}
-              </span>
-            </motion.header>
 
-            <motion.p
-              className="text-gray-300 text-sm md:text-base leading-relaxed"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              {exp.desc}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="space-y-2"
-            >
-              <h4 className="font-semibold text-white text-sm tracking-wider uppercase">
-                Key Achievements & Responsibilities
-              </h4>
-              <ul className="list-disc list-inside text-gray-300 space-y-1.5 text-sm md:text-base pl-1">
-                {exp.features.map((f, idx) => (
-                  <motion.li
-                    key={idx}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6 + idx * 0.1 }}
-                  >
-                    {f}
-                  </motion.li>
-                ))}
-              </ul>
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-white text-xs tracking-widest uppercase">Key Achievements</h4>
+                  <ul className="space-y-2">
+                    {exp.features.map((f, idx) => (
+                      <li key={idx} className="flex gap-3 text-gray-300 text-sm md:text-base items-start">
+                        <span className="text-brand-red mt-1 text-[10px]">■</span>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </SpotlightCard>
             </motion.div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </motion.div>
     </motion.div>
   );

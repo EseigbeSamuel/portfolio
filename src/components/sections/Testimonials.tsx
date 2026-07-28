@@ -3,6 +3,7 @@
 import { testimonialsData } from "@/data/data";
 import { motion, Variants } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import SpotlightCard from "@/components/SpotlightCard";
 
 const CONTAINER: Variants = {
   hidden: { opacity: 0 },
@@ -44,13 +45,13 @@ export default function Testimonials() {
       {/* SECTION HEADER */}
       <motion.div className="text-center space-y-3" variants={FADE_UP}>
         <motion.h1
-          className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
+          className="text-4xl lg:text-6xl font-bold font-heading tracking-tight text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
         >
-          Testimonials
+          Words of <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-brand-orange">Trust</span>
         </motion.h1>
         <motion.p
           className="text-base lg:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed text-center"
@@ -59,7 +60,8 @@ export default function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Kind words from colleagues, clients, and partners who I have collaborated with.
+          Kind words from colleagues, clients, and partners who I have
+          collaborated with.
         </motion.p>
       </motion.div>
 
@@ -75,15 +77,15 @@ export default function Testimonials() {
           {duplicatedTestimonials.map((t, idx) => (
             <div
               key={idx}
-              className="group rounded-2xl bg-gradient-to-br from-brand-red/40 to-brand-orange/40 p-[1px] shadow-xl hover:shadow-brand-red/10 transition-all duration-300 w-[290px] sm:w-[340px] md:w-[380px] lg:w-[420px] flex-shrink-0"
+              className="w-[290px] sm:w-[340px] md:w-[380px] lg:w-[420px] flex-shrink-0"
             >
-              <div className="bg-brand-dark p-5 md:p-6 rounded-[15px] h-full flex flex-col justify-between relative overflow-hidden">
+              <SpotlightCard className="p-6 md:p-8 h-full flex flex-col justify-between relative overflow-hidden group">
                 {/* Subtle background decorative quote */}
                 <div className="absolute right-3 bottom-3 opacity-5 group-hover:opacity-10 transition-opacity duration-300 text-brand-red">
-                  <Quote className="w-16 h-16 stroke-[1px]" />
+                  <Quote className="w-20 h-20 stroke-[1px]" />
                 </div>
 
-                <div className="space-y-4 z-10">
+                <div className="space-y-6 z-10">
                   {/* Rating stars and Quote Icon */}
                   <div className="flex justify-between items-center">
                     <div className="flex gap-1">
@@ -104,12 +106,12 @@ export default function Testimonials() {
                 </div>
 
                 {/* Author Info */}
-                <div className="mt-5 flex items-center gap-3 border-t border-gray-800/80 pt-4 z-10">
+                <div className="mt-8 flex items-center gap-3 border-t border-white/5 pt-5 z-10">
                   <div>
-                    <h3 className="font-semibold text-base text-white group-hover:text-brand-orange transition-colors duration-300">
+                    <h3 className="font-semibold text-lg text-white group-hover:text-brand-orange transition-colors duration-300">
                       {t.name}
                     </h3>
-                    <p className="text-xs text-gray-400 capitalize">
+                    <p className="text-xs text-gray-400 capitalize mt-1">
                       {t.role} at{" "}
                       <span className="text-brand-red font-semibold">
                         {t.company}
@@ -117,7 +119,7 @@ export default function Testimonials() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </div>
           ))}
         </div>
@@ -125,4 +127,3 @@ export default function Testimonials() {
     </motion.div>
   );
 }
-

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ModalProvider } from "@/contexts/ModalContext";
 import Modal from "@/components/Modal";
 import { Analytics } from "@vercel/analytics/next";
+import Noise from "@/components/Noise";
 
 // Display font for headings - bold, modern, tech-forward
 const spaceGrotesk = Space_Grotesk({
@@ -56,9 +57,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased bg-black text-white`}
         suppressHydrationWarning
       >
+        <Noise />
         <ModalProvider>
           {children}
           <Modal />

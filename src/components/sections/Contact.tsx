@@ -1,11 +1,23 @@
 "use client";
 
-import { Locate, Mail, Send, CheckCircle2, AlertCircle, Copy, Check, ExternalLink, RefreshCw, Loader2 } from "lucide-react";
+import {
+  Locate,
+  Mail,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Copy,
+  Check,
+  ExternalLink,
+  RefreshCw,
+  Loader2,
+} from "lucide-react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Button from "@/components/Button";
+import SpotlightCard from "@/components/SpotlightCard";
 
 const textContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -56,7 +68,9 @@ export default function Contact() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [sentSummary, setSentSummary] = useState<{
@@ -71,16 +85,19 @@ export default function Contact() {
     let err = "";
     if (field === "name") {
       if (!value.trim()) err = "Name is required";
-      else if (value.trim().length < 2) err = "Name must be at least 2 characters";
+      else if (value.trim().length < 2)
+        err = "Name must be at least 2 characters";
     }
     if (field === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!value.trim()) err = "Email address is required";
-      else if (!emailRegex.test(value.trim())) err = "Please enter a valid email address";
+      else if (!emailRegex.test(value.trim()))
+        err = "Please enter a valid email address";
     }
     if (field === "message") {
       if (!value.trim()) err = "Message is required";
-      else if (value.trim().length < 10) err = "Message must be at least 10 characters";
+      else if (value.trim().length < 10)
+        err = "Message must be at least 10 characters";
     }
     return err;
   };
@@ -121,19 +138,22 @@ export default function Contact() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("https://formsubmit.co/ajax/eseigbesamuel810@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+      const res = await fetch(
+        "https://formsubmit.co/ajax/eseigbesamuel810@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            _subject: `[Portfolio Inquiry] ${formData.subject}`,
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }),
         },
-        body: JSON.stringify({
-          _subject: `[Portfolio Inquiry] ${formData.subject}`,
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
+      );
 
       const text = await res.text();
       let data;
@@ -143,7 +163,7 @@ export default function Contact() {
         console.error("FormSubmit non-JSON response:", text);
         setStatus("error");
         setErrorMessage(
-          "Service is temporarily protecting the endpoint. Please check your inbox for an activation email if this is your first time, or email directly."
+          "Service is temporarily protecting the endpoint. Please check your inbox for an activation email if this is your first time, or email directly.",
         );
         return;
       }
@@ -156,17 +176,28 @@ export default function Contact() {
           subject: formData.subject,
           message: formData.message,
         });
-        setFormData({ name: "", email: "", subject: PROJECT_TYPES[0], message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          subject: PROJECT_TYPES[0],
+          message: "",
+        });
         setTouched({});
         setErrors({});
       } else {
         setStatus("error");
-        setErrorMessage(data.message || data.error || "Failed to send message. Please try again.");
+        setErrorMessage(
+          data.message ||
+            data.error ||
+            "Failed to send message. Please try again.",
+        );
       }
     } catch (err) {
       console.error(err);
       setStatus("error");
-      setErrorMessage("Network error occurred. Please check your connection or contact directly via email.");
+      setErrorMessage(
+        "Network error occurred. Please check your connection or contact directly via email.",
+      );
     }
   };
 
@@ -191,17 +222,18 @@ export default function Contact() {
         viewport={{ once: true, amount: 0.5 }}
       >
         <motion.h1
-          className="text-3xl lg:text-5xl font-bold text-center mb-3"
+          className="text-4xl lg:text-7xl font-bold font-heading text-center mb-6 tracking-tighter"
           variants={itemVariants}
         >
-          Get in Touch
+          Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-brand-orange">Connect</span>
         </motion.h1>
         <motion.p
           className="text-base lg:text-xl text-center text-gray-400 max-w-2xl mx-auto leading-relaxed"
           variants={itemVariants}
         >
           I'm always interested in new opportunities and exciting projects.
-          Whether you have a question or just want to say hi, feel free to reach out!
+          Whether you have a question or just want to say hi, feel free to reach
+          out!
         </motion.p>
       </motion.section>
 
@@ -232,7 +264,9 @@ export default function Contact() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="truncate">
-                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Email</h4>
+                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                      Email
+                    </h4>
                     <p className="text-white group-hover:text-brand-orange transition-colors truncate font-medium text-sm md:text-base">
                       eseigbesamuel810@gmail.com
                     </p>
@@ -248,7 +282,9 @@ export default function Contact() {
                   {copiedEmail ? (
                     <>
                       <Check className="w-4 h-4 text-emerald-400" />
-                      <span className="text-emerald-400 font-semibold hidden sm:inline">Copied!</span>
+                      <span className="text-emerald-400 font-semibold hidden sm:inline">
+                        Copied!
+                      </span>
                     </>
                   ) : (
                     <>
@@ -267,33 +303,38 @@ export default function Contact() {
                   <Locate className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Location</h4>
-                  <p className="text-white font-medium text-sm md:text-base">Lagos, Nigeria</p>
+                  <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    Location
+                  </h4>
+                  <p className="text-white font-medium text-sm md:text-base">
+                    Lagos, Nigeria
+                  </p>
                 </div>
               </motion.div>
             </div>
           </div>
 
           {/* WHAT I'M LOOKING FOR */}
-          <motion.div
-            className="rounded-2xl bg-brand-dark border border-white/5 p-6 space-y-4 shadow-lg"
-            variants={itemVariants}
-          >
-            <h3 className="font-bold text-xl text-white">What I'm Looking For</h3>
-            <ul className="space-y-2.5 text-gray-300 text-sm md:text-base">
-              <li className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-brand-red shrink-0"></span>
-                Full-stack development opportunities
-              </li>
-              <li className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-brand-orange shrink-0"></span>
-                Web app development projects
-              </li>
-              <li className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-brand-red shrink-0"></span>
-                Mobile app development projects
-              </li>
-            </ul>
+          <motion.div variants={itemVariants}>
+            <SpotlightCard className="p-6 space-y-4 shadow-lg">
+              <h3 className="font-bold text-xl text-white">
+                What I'm Looking For
+              </h3>
+              <ul className="space-y-2.5 text-gray-300 text-sm md:text-base">
+                <li className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-brand-red shrink-0"></span>
+                  Full-stack development opportunities
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-brand-orange shrink-0"></span>
+                  Web app development projects
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-brand-red shrink-0"></span>
+                  Mobile app development projects
+                </li>
+              </ul>
+            </SpotlightCard>
           </motion.div>
 
           {/* SOCIALS */}
@@ -355,7 +396,7 @@ export default function Contact() {
           transition={{ type: "spring", stiffness: 100, delay: 0.3 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="rounded-2xl bg-brand-dark border border-white/5 shadow-2xl p-6 lg:p-8 relative overflow-hidden h-full flex flex-col justify-center">
+          <SpotlightCard className="shadow-2xl p-6 lg:p-8 relative overflow-hidden h-full flex flex-col justify-center">
             {status === "success" && sentSummary ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -366,17 +407,33 @@ export default function Contact() {
                   <CheckCircle2 className="w-10 h-10 animate-pulse" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-white">Message Sent Successfully!</h3>
+                  <h3 className="text-2xl font-bold text-white">
+                    Message Sent Successfully!
+                  </h3>
                   <p className="text-gray-400 max-w-md mx-auto text-sm md:text-base">
-                    Thank you, <span className="text-white font-medium">{sentSummary.name}</span>. Your message regarding{" "}
-                    <span className="text-brand-orange font-medium">{sentSummary.subject}</span> has been received. I will reply to{" "}
-                    <span className="text-white font-medium">{sentSummary.email}</span> within 24 hours.
+                    Thank you,{" "}
+                    <span className="text-white font-medium">
+                      {sentSummary.name}
+                    </span>
+                    . Your message regarding{" "}
+                    <span className="text-brand-orange font-medium">
+                      {sentSummary.subject}
+                    </span>{" "}
+                    has been received. I will reply to{" "}
+                    <span className="text-white font-medium">
+                      {sentSummary.email}
+                    </span>{" "}
+                    within 24 hours.
                   </p>
                 </div>
 
                 <div className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-left space-y-2 text-xs md:text-sm text-gray-300">
-                  <div className="font-semibold text-gray-400 text-xs uppercase tracking-wider">Summary of Inquiry:</div>
-                  <div className="line-clamp-3 italic text-gray-200">"{sentSummary.message}"</div>
+                  <div className="font-semibold text-gray-400 text-xs uppercase tracking-wider">
+                    Summary of Inquiry:
+                  </div>
+                  <div className="line-clamp-3 italic text-gray-200">
+                    "{sentSummary.message}"
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 w-full pt-2">
@@ -405,8 +462,12 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 <div className="space-y-1">
-                  <h3 className="font-bold text-2xl text-white">Send a Message</h3>
-                  <p className="text-sm text-gray-400">Fill out the form below or reach out directly.</p>
+                  <h3 className="font-bold text-2xl text-white">
+                    Send a Message
+                  </h3>
+                  <p className="text-sm text-gray-400">
+                    Fill out the form below or reach out directly.
+                  </p>
                 </div>
 
                 {status === "error" && errorMessage && (
@@ -422,7 +483,7 @@ export default function Contact() {
                         You can also send your message directly via email to{" "}
                         <a
                           href={`mailto:eseigbesamuel810@gmail.com?subject=${encodeURIComponent(
-                            formData.subject
+                            formData.subject,
                           )}&body=${encodeURIComponent(formData.message)}`}
                           className="underline hover:text-white font-semibold"
                         >
@@ -438,7 +499,10 @@ export default function Contact() {
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* NAME FIELD */}
                     <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex justify-between">
+                      <label
+                        htmlFor="name"
+                        className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex justify-between"
+                      >
                         <span>Your Name</span>
                         <span className="text-brand-red">*</span>
                       </label>
@@ -466,7 +530,10 @@ export default function Contact() {
 
                     {/* EMAIL FIELD */}
                     <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex justify-between">
+                      <label
+                        htmlFor="email"
+                        className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex justify-between"
+                      >
                         <span>Your Email</span>
                         <span className="text-brand-red">*</span>
                       </label>
@@ -495,7 +562,10 @@ export default function Contact() {
 
                   {/* SUBJECT / PROJECT TYPE */}
                   <div className="space-y-1.5">
-                    <label htmlFor="subject" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    <label
+                      htmlFor="subject"
+                      className="text-xs font-semibold text-gray-400 uppercase tracking-wider"
+                    >
                       Project Type / Subject
                     </label>
                     <select
@@ -505,7 +575,11 @@ export default function Contact() {
                       className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all text-sm appearance-none cursor-pointer"
                     >
                       {PROJECT_TYPES.map((type) => (
-                        <option key={type} value={type} className="bg-brand-dark text-white">
+                        <option
+                          key={type}
+                          value={type}
+                          className="bg-brand-dark text-white"
+                        >
                           {type}
                         </option>
                       ))}
@@ -519,7 +593,9 @@ export default function Contact() {
                         <span>Message</span>
                         <span className="text-brand-red">*</span>
                       </label>
-                      <span className={`${formData.message.length > 1000 ? "text-red-400" : "text-gray-500"}`}>
+                      <span
+                        className={`${formData.message.length > 1000 ? "text-red-400" : "text-gray-500"}`}
+                      >
                         {formData.message.length} / 1000
                       </span>
                     </div>
@@ -550,7 +626,11 @@ export default function Contact() {
                 <div className="pt-2">
                   <Button
                     type="submit"
-                    label={status === "submitting" ? "Sending Message..." : "Send Message"}
+                    label={
+                      status === "submitting"
+                        ? "Sending Message..."
+                        : "Send Message"
+                    }
                     fullWidth={true}
                     disabled={status === "submitting"}
                     icon={
@@ -564,7 +644,7 @@ export default function Contact() {
                 </div>
               </form>
             )}
-          </div>
+          </SpotlightCard>
         </motion.section>
       </div>
     </div>

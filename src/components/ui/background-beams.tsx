@@ -57,8 +57,8 @@ export const BackgroundBeams = React.memo(
       "M-44 -573C-44 -573 24 -168 488 -41C952 86 1020 491 1020 491",
       "M-37 -581C-37 -581 31 -176 495 -49C959 78 1027 483 1027 483",
     ];
-    // Reduce total paths animated by 4x to save massive rendering and DOM overhead
-    const paths = allPaths.filter((_, i) => i % 4 === 0);
+    // Reduce total paths animated significantly to ensure smooth mobile performance
+    const paths = allPaths.filter((_, i) => i % 8 === 0);
 
     return (
       <div

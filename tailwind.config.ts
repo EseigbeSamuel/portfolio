@@ -29,7 +29,7 @@ export default {
       },
       colors: {
         brand: {
-          dark: "#121b1d",
+          dark: "#09090b", // Deep rich black for premium feel
           red: "#df2326",
           orange: "#e7541c",
         },

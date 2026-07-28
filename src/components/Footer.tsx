@@ -12,11 +12,13 @@ export default function Footer() {
             <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-brand-red to-brand-orange text-white font-bold text-base shadow-md">
               SE
             </div>
-            <h2 className="font-bold text-xl text-white tracking-tight">Samuel Eseigbe</h2>
+            <h2 className="font-bold text-xl text-white tracking-tight">
+              Samuel Eseigbe
+            </h2>
           </div>
           <p className="text-gray-400 text-sm max-w-md leading-relaxed">
-            Full-stack developer passionate about creating innovative solutions 
-            across web, mobile, and automation platforms. Let's build something 
+            Full-stack developer passionate about creating innovative solutions
+            across web, mobile, and automation platforms. Let's build something
             amazing together!
           </p>
           <div className="flex space-x-3 pt-2">
@@ -49,7 +51,9 @@ export default function Footer() {
 
         {/* Center Column: Quick Links */}
         <div className="md:col-span-3 space-y-4">
-          <h3 className="font-semibold text-white uppercase text-xs tracking-wider">Quick Links</h3>
+          <h3 className="font-semibold text-white uppercase text-xs tracking-wider">
+            Quick Links
+          </h3>
           <nav className="flex flex-col gap-2.5">
             {navitems.map((n) => (
               <Link
@@ -65,7 +69,9 @@ export default function Footer() {
 
         {/* Right Column: Services */}
         <div className="md:col-span-3 space-y-4">
-          <h3 className="font-semibold text-white uppercase text-xs tracking-wider">Services</h3>
+          <h3 className="font-semibold text-white uppercase text-xs tracking-wider">
+            Services
+          </h3>
           <ul className="flex flex-col gap-2.5 text-gray-400 text-sm">
             <li>Web Development</li>
             <li>Mobile Apps</li>
@@ -76,8 +82,9 @@ export default function Footer() {
       </div>
 
       <div className="max-w-[1440px] mx-auto mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row sm:justify-between items-center gap-4 text-xs text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Samuel Eseigbe. All rights reserved.</p>
-        <p className="font-mono">Built with Next.js & Tailwind CSS</p>
+        <p>
+          &copy; {new Date().getFullYear()} Samuel Eseigbe. All rights reserved.
+        </p>
       </div>
     </footer>
   );
