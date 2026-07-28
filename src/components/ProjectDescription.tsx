@@ -20,7 +20,7 @@ export default function ProjectDescription({
   return (
     <div className="text-white flex flex-col h-full max-h-[85vh]">
       <div className="relative w-full h-64 xl:h-[300px] shrink-0 rounded-t-xl overflow-hidden">
-        <Image src={image} alt={title} fill className="object-cover" />
+        <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent"></div>
       </div>
 

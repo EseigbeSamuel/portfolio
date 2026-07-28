@@ -45,21 +45,21 @@ export default function Hero() {
       <BackgroundBeams className="opacity-90" />
 
       <motion.section
-        className="text-center space-y-5 p-4 max-w-4xl mx-auto z-10"
+        className="text-center space-y-5 p-4 mt-10 max-w-4xl  z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.div className="space-y-2">
           <motion.h2
-            className="text-sm md:text-lg font-mono tracking-widest text-brand-orange uppercase"
+            className="text-sm md:text-lg tracking-widest text-brand-orange uppercase"
             variants={itemVariants}
           >
             Creative Software Engineer
           </motion.h2>
-          
+
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-tight"
+            className="text-4xl md:text-6xl lg:text-8xl font-bold font-heading tracking-tight text-white leading-tight"
             variants={itemVariants}
           >
             Samuel{" "}
@@ -73,8 +73,9 @@ export default function Hero() {
           className="text-base lg:text-xl text-gray-400 font-sans max-w-2xl mx-auto leading-relaxed pt-2"
           variants={itemVariants}
         >
-          Specializing in Next.js, React Native, and full-stack solutions. 
-          Crafting digital experiences that merge high-end design with robust engineering.
+          Specializing in Next.js, React Native, and full-stack solutions.
+          Crafting digital experiences that merge high-end design with robust
+          engineering.
         </motion.p>
       </motion.section>
 
