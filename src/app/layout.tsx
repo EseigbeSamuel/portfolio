@@ -28,13 +28,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Samuel Eseigbe - Software Developer",
-  description: "Full-stack developer specializing in modern web applications",
+  title: "Samuel Eseigbe - Software Engineer",
+  description: "Software Engineer specializing in modern web applications",
   keywords: [
     "eseigbe",
     "samuel",
     "portfolio",
     "software developer",
+    "software engineer",
     "web developer",
     "full-stack",
   ],
@@ -43,8 +44,8 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Samuel Eseigbe - Software Developer",
-    description: "Full-stack developer specializing in modern web applications",
+    title: "Samuel Eseigbe - Software Engineer",
+    description: "Software Engineer specializing in modern web applications",
     type: "website",
   },
 };
