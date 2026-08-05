@@ -33,7 +33,7 @@ export default function Hero() {
 
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/Samuel-Osezele-Eseigbe-Resume.pdf"; // Update with actual path to resume
+    link.href = "/Samuel Eseigbe - Software Engineer - Resume.pdf"; // Update with actual path to resume
     link.download = "Samuel_Eseigbe_Resume.pdf";
     document.body.appendChild(link);
     link.click();
