@@ -102,7 +102,7 @@ export default function About() {
             </h2>
             <div className="flex flex-wrap gap-2">
               {Skills.flatMap((s) => s.tech)
-                .slice(0, 12)
+
                 .map((tech, i) => (
                   <span
                     key={i}

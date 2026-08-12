@@ -185,7 +185,7 @@ export const Skills: skillsProps[] = [
     title: "Mobile Development",
     icon: <FaMobileAlt />,
     color: "from-purple-500 to-pink-500",
-    tech: ["React Native", "Mobile UI/UX", "Push Notifications"],
+    tech: ["React Native", "Push Notifications"],
   },
   // {
   //   title: "DevOps & Tools",
