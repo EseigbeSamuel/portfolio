@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Samuel Eseigbe" }],
   icons: {
-    icon: "/favicon.ico",
+    icon: "/vercel.svg",
   },
   openGraph: {
     title: "Samuel Eseigbe - Software Engineer",
