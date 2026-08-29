@@ -134,7 +134,7 @@ export default function About() {
                     Software Development
                   </h3>
                   <p className="text-brand-red text-sm mt-1">
-                    BAFUTO Institute of Information and Technology
+                    BAFUTO Institute of Management and Information Technology
                   </p>
                 </div>
                 <div>
