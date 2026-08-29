@@ -4,6 +4,7 @@ import "./globals.css";
 import { ModalProvider } from "@/contexts/ModalContext";
 import Modal from "@/components/Modal";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 // import Noise from "@/components/Noise";
 
 // Display font for headings - bold, modern, tech-forward
@@ -75,6 +76,7 @@ export default function RootLayout({
         </ModalProvider>
       </body>
       <Analytics />
+      <SpeedInsights />
     </html>
   );
 }
