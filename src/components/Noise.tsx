@@ -1,11 +1,17 @@
 "use client";
 
+// The feTurbulence SVG filter is extremely CPU-intensive and crashes mobile browsers.
+// Replaced with a lightweight CSS-only pseudo-noise overlay that achieves a similar
+// visual effect without any SVG filter processing.
 export default function Noise() {
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03]"
+      className="pointer-events-none fixed inset-0 z-50 h-full w-full"
       style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        opacity: 0.035,
+        backgroundImage: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4t5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM+I2EfhA94iG3L7uKrR+GdWD73ydlIB+6hgref1QTlmgmbM3/LeX5GI1Ux1RWpgxpLuZ2+I+IjzZ8wqE4nilvQdkUdfhzI5QDWy+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqR287TD3fXPHTd3IjTojb8Ad0ex33dVts9io3qN7pPHjgVPZnMyvVtCMiuqaqjEHFTFr4a0S/o5m6tmqg1uKEWLSDeIPBbGGcXgDFvSLNuMNxRlaqNLvHIKpJFkNKfpPcVY5qVA1Azs96KzS4MhTjDPhA2gu0YOVBSNdDGhEY6OM8nYb9LOQ7sCbGz0VoEWCyNMXGmRrQPz7O3JNFnOqlqFf1UARlkKSCRdFBIr5B1mvRuF0dvpS7+5yCRBMlO3N3bEVmIabcFZFoZEMlf0mRRuEkL4M8tqjLOOc4y7sQqxB/C8FZlMVm1sxFCJxLc68WR6uiMYK2pMhkEYgLzn7N8+Q7XUc8Tp/h5UcGVGMqjAYCe2Br0GBqOAeQRz4HlYxMj9qO0bVWw1UwAmkWHqwdOIPcFGP8M+sC2EKRM5/b1j9WYlR/lMvEXhYBCRkF5/Wh9z+w61T//dw6gSKq+U7s7DKKLJp7FBL3dGe3f0DmL0PJQEX/+eTSmKScMuJHy8LNQZaSQjAzh5I1ufkNOW6EaGnUvIcqbBMaXMvJYlxR9xBi8Y0MQZEFWibTYikuTMzgGEIqYpvCfIFNNqPYpn3XkpGDqDsN1MLrqzBQFcqp+mPlAbkqY1gUa1Gk0cCrBRO38vR5vRUE3yEXpJhCH1cSFbpHELfPZXNNqwFrI72lJUfSPEniEv0dEGFPNRmGnbJGMEBRuXm4gElDMWwAr/m4AJExGJSHPHFiRkXQFDQS/p5GFxRSJGFfG9Fh3b/WqIqhMl0VvBX4lhqcJN7qzJdAx+0JMeEjN3f29p01VrKAMvNSEifIvRdCBxLM5OVoO1kCVKAKbvgz1DcVqPYBxBBMC/S+rIxnEV9Sz8pHEwJX9ZOwCHR2NrP4OA9DRKQJFnP9Xl7r8zX9t5h8dO4sEqLHH5K51XQ7LFQDl1RsBFx+4lAC5bMrA==")`,
+        backgroundRepeat: "repeat",
+        backgroundSize: "182px 182px",
       }}
     />
   );

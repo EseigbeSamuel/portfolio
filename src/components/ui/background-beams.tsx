@@ -1,10 +1,20 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const BackgroundBeams = React.memo(
   ({ className }: { className?: string }) => {
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+      const mql = window.matchMedia("(max-width: 768px)");
+      setIsMobile(mql.matches);
+      const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+      mql.addEventListener("change", handler);
+      return () => mql.removeEventListener("change", handler);
+    }, []);
+
     const allPaths = [
       "M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875",
       "M-373 -197C-373 -197 -305 208 159 335C623 462 691 867 691 867",
@@ -87,8 +97,8 @@ export const BackgroundBeams = React.memo(
             />
           ))}
 
-          {/* Animated glowing beams */}
-          {paths.map((path, index) => (
+          {/* Animated glowing beams — desktop only */}
+          {!isMobile && paths.map((path, index) => (
             <motion.path
               key={`path-` + index}
               d={path}
@@ -98,7 +108,8 @@ export const BackgroundBeams = React.memo(
             ></motion.path>
           ))}
           <defs>
-            {paths.map((path, index) => (
+            {/* Animated gradients — desktop only */}
+            {!isMobile && paths.map((path, index) => (
               <motion.linearGradient
                 id={`linearGradient-${index}`}
                 key={`gradient-${index}`}
