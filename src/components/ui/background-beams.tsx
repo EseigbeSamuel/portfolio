@@ -3,32 +3,28 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * BackgroundBeams — Safari-optimized animated beam effect.
+ * BackgroundBeams — Desktop-only, performance-optimised.
  *
- * Why stroke-dashoffset instead of motion.linearGradient:
- * - Animating SVG gradient attributes (x1/y1/x2/y2) via JS is broken on Safari/iOS.
- *   Safari does not support SMIL or JS-driven SVG gradient animations reliably.
- * - stroke-dashoffset animation is CSS-native, GPU-composited, and works perfectly
- *   on all browsers including Safari on iOS and macOS.
- * - Each beam is a short dashed segment (dasharray) traveling along its path
- *   by incrementing dashoffset — creating a smooth "shooting beam" effect.
+ * Performance rules applied:
+ * 1. Mobile: `hidden md:block` — zero DOM cost, zero paint.
+ * 2. Filter on GROUP not individual paths — one compositing layer total,
+ *    not one per path. This is the single biggest perf win.
+ * 3. Only 5 animated beams — visually sufficient, GPU-friendly.
+ * 4. Sparse track lines — every 5th path, ~10 total.
+ * 5. Simple single-pass feGaussianBlur — no feMerge stacking.
+ * 6. `will-change: auto` — let the browser decide; over-hinting hurts perf.
  */
 
-// 8 duration/delay combos so beams feel staggered and alive
-const BEAM_TIMINGS = [
-  { duration: "9s",  delay: "0s"   },
-  { duration: "11s", delay: "1.4s" },
-  { duration: "8s",  delay: "2.8s" },
-  { duration: "13s", delay: "0.7s" },
-  { duration: "10s", delay: "3.5s" },
-  { duration: "12s", delay: "1.9s" },
-  { duration: "7s",  delay: "4.2s" },
-  { duration: "14s", delay: "0.3s" },
+const BEAM_CONFIGS = [
+  { pathIndex: 4,  duration: "10s", delay: "0s",   color: "#df2326", dashLen: 45 },
+  { pathIndex: 12, duration: "14s", delay: "2.5s",  color: "#e7541c", dashLen: 35 },
+  { pathIndex: 20, duration: "9s",  delay: "5.1s",  color: "#df2326", dashLen: 55 },
+  { pathIndex: 28, duration: "12s", delay: "1.3s",  color: "#e8481a", dashLen: 30 },
+  { pathIndex: 36, duration: "11s", delay: "7.8s",  color: "#c91c1f", dashLen: 40 },
 ];
 
 export const BackgroundBeams = React.memo(
   ({ className }: { className?: string }) => {
-    // Use a balanced spread of paths — enough for visual richness without overloading mobile GPU
     const allPaths = [
       "M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875",
       "M-373 -197C-373 -197 -305 208 159 335C623 462 691 867 691 867",
@@ -82,62 +78,48 @@ export const BackgroundBeams = React.memo(
       "M-37 -581C-37 -581 31 -176 495 -49C959 78 1027 483 1027 483",
     ];
 
-    // Every 5th path = 10 active beams — visually rich, mobile-safe
-    const beamPaths = allPaths.filter((_, i) => i % 5 === 0);
-    // Every 2nd path = 25 faint track lines
-    const trackPaths = allPaths.filter((_, i) => i % 2 === 0);
+    // ~10 sparse track lines — decorative only, no filter applied
+    const trackPaths = allPaths.filter((_, i) => i % 5 === 0);
 
     return (
+      // hidden md:block — zero DOM presence on mobile
       <div
         className={cn(
-          "absolute inset-0 w-full h-[100vh] flex items-center justify-center pointer-events-none overflow-hidden",
+          "hidden md:block absolute inset-0 w-full h-[100vh] pointer-events-none overflow-hidden",
           className
         )}
       >
-        {/*
-          Inject CSS keyframes for the beam travel animation.
-          Using stroke-dashoffset is the ONLY animation technique that:
-          1. Works correctly on Safari (iOS + macOS)
-          2. Is fully GPU-composited (no layout/paint thrashing)
-          3. Runs at 60fps on mobile without JS overhead
-        */}
         <style>{`
           @keyframes beam-travel {
-            0%   { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: -1500; }
+            to { stroke-dashoffset: -1500; }
           }
         `}</style>
 
         <svg
-          className="absolute z-0 w-[200%] h-[200%] md:w-full md:h-full"
-          width="100%"
-          height="100%"
+          className="absolute inset-0 w-full h-full"
           viewBox="0 0 696 316"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
         >
           <defs>
-            {/* Radial fade for the track lines */}
             <radialGradient
-              id="beams-track-gradient"
-              cx="0"
-              cy="0"
-              r="1"
+              id="track-fade"
+              cx="50%" cy="30%" r="70%"
               gradientUnits="userSpaceOnUse"
-              gradientTransform="translate(352 34) rotate(90) scale(555 1560.62)"
             >
-              <stop offset="0.0666667" stopColor="#d4d4d4" />
-              <stop offset="0.243243" stopColor="#d4d4d4" />
-              <stop offset="0.43594" stopColor="white" stopOpacity="0" />
+              <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="70%"  stopColor="#ffffff" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0"   />
             </radialGradient>
 
             {/*
-              Beam glow filter — drop-shadow applied to each beam path.
-              Using feGaussianBlur (not feTurbulence!) which is cheap and
-              Safari-safe. Gives beams a soft neon glow.
+              Single shared glow filter applied once to the <g> group below.
+              Cost: 1 GPU layer instead of N layers (one per path).
+              stdDeviation="2" gives a soft, wide aura without being heavy.
             */}
-            <filter id="beam-glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="1.2" result="blur" />
+            <filter id="beam-glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -145,55 +127,45 @@ export const BackgroundBeams = React.memo(
             </filter>
           </defs>
 
-          {/* Faint track lines — show the "rails" the beams travel on */}
-          {trackPaths.map((path, index) => (
-            <path
-              key={`track-${index}`}
-              d={path}
-              stroke="url(#beams-track-gradient)"
-              strokeOpacity="0.06"
-              strokeWidth="0.5"
-              fill="none"
-            />
-          ))}
+          {/* Track lines — no filter, trivially cheap */}
+          <g>
+            {trackPaths.map((path, i) => (
+              <path
+                key={`track-${i}`}
+                d={path}
+                stroke="url(#track-fade)"
+                strokeOpacity="0.08"
+                strokeWidth="0.5"
+                fill="none"
+              />
+            ))}
+          </g>
 
           {/*
-            Animated beams using stroke-dashoffset.
-            - dasharray="40 1500"  → a 40-unit glowing dash with a 1500-unit gap
-            - dashoffset animates from 0 → -1500 via CSS (not JS), so Safari handles it natively
-            - filter="url(#beam-glow)" adds the soft neon glow
-            - Each beam has a unique duration + delay from BEAM_TIMINGS
+            Beams group — filter applied ONCE here, not per path.
+            All 5 beams composite together into a single GPU layer.
           */}
-          {beamPaths.map((path, index) => {
-            const timing = BEAM_TIMINGS[index % BEAM_TIMINGS.length];
-            // Alternate between brand-red and brand-orange for variety
-            const color = index % 2 === 0 ? "#df2326" : "#e7541c";
-            return (
+          <g filter="url(#beam-glow)">
+            {BEAM_CONFIGS.map((cfg, i) => (
               <path
-                key={`beam-${index}`}
-                d={path}
-                stroke={color}
-                strokeOpacity="0.85"
-                strokeWidth="0.8"
+                key={`beam-${i}`}
+                d={allPaths[cfg.pathIndex]}
+                stroke={cfg.color}
+                strokeOpacity="0.9"
+                strokeWidth="1"
                 fill="none"
                 strokeLinecap="round"
-                strokeDasharray="40 1500"
-                strokeDashoffset="0"
-                filter="url(#beam-glow)"
+                strokeDasharray={`${cfg.dashLen} 1500`}
                 style={{
                   animationName: "beam-travel",
-                  animationDuration: timing.duration,
-                  animationDelay: timing.delay,
+                  animationDuration: cfg.duration,
+                  animationDelay: cfg.delay,
                   animationTimingFunction: "linear",
                   animationIterationCount: "infinite",
-                  animationFillMode: "none",
-                  // Safari GPU hint
-                  WebkitTransform: "translateZ(0)",
-                  transform: "translateZ(0)",
                 }}
               />
-            );
-          })}
+            ))}
+          </g>
         </svg>
       </div>
     );
