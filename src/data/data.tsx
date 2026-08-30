@@ -214,8 +214,8 @@ interface expProps {
 
 export const Exp: expProps[] = [
   {
-    title: "Software developer",
-    place: "elsoft tech hub",
+    title: "Software Engineer",
+    place: "Elsoft Tech Hub",
     date: "january 2025 - present",
     desc: "Contributed developed and delivered responsive, user-centric web and mobile applications. ",
     features: [
@@ -227,8 +227,8 @@ export const Exp: expProps[] = [
     ],
   },
   {
-    title: "frontend developer intern",
-    place: "veegel technology limited",
+    title: "Frontend Developer Intern",
+    place: "Veegel Technology Limited",
     date: "june 2024 - december 2024 ",
     desc: "Contributed to the development of a cybersecurity compliance web application using React.",
     features: [
@@ -239,8 +239,8 @@ export const Exp: expProps[] = [
     ],
   },
   {
-    title: "web development instructor",
-    place: "BAFUTO institute of information and technology",
+    title: "Web Development Instructor",
+    place: "BAFUTO Institute of Management and Information Technology",
     date: "march 2023 - may 2024",
     desc: "Mentored and guided 20+ students through the fundamentals of web development, covering HTML, CSS, JavaScript, and React.",
     features: [
