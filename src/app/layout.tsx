@@ -29,8 +29,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://samueleseigbe.vercel.app/"),
   title: "Samuel Eseigbe - Software Engineer",
-  description: "Software Engineer specializing in modern web applications",
+  description:
+    "Software Engineer specializing in modern web and mobile applications",
   keywords: [
     "eseigbe",
     "samuel",
@@ -46,8 +48,24 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Samuel Eseigbe - Software Engineer",
-    description: "Software Engineer specializing in modern web applications",
+    description:
+      "Software Engineer specializing in modern web and mobile applications",
     type: "website",
+    images: [
+      {
+        url: "/portfolio.png",
+        width: 1200,
+        height: 630,
+        alt: "Samuel Eseigbe - Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Samuel Eseigbe - Software Engineer",
+    description:
+      "Software Engineer specializing in modern web and mobile applications",
+    images: ["/portfolio.png"],
   },
 };
 
